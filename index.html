@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromovaWeb Classes Overview</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>PromovaWeb Classes Overview</h1>
+    </header>
+
+    <main>
+        <section id="classes-overview">
+            <h2 id="classes-overview-title">Anotações das Aulas</h2>
+            <p id="classes-overview-description">Bem vindo a página de overview das aulas do PromovaWeb. Aqui você pode encontrar as anotações feitas em cada uma das aulas</p>
+            
+            <div id="modules-list">
+                <details>
+                    <summary class="module-title">MODULO 01. Configuração da VPS (OPSVPS)</summary>
+                    <ul id="class-list">
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 01 - Visão Geral da Hetzner Cloud</summary>
+                                <div class="class-content">
+                                    <div class="notes">
+                                        <p>Fazer uma conta na <mark>Hetzner</mark></p>
+                                        <img src="assets/images/modulo01_aula01_01.png" alt="">
+                                    </div>
+                                </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 02 - Criando um Projeto na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>Faça um Novo Projeto</p>
+                                        <img src="assets/images/modulo01_aula02_01.png" alt="">
+                                        <p>Primeira coisa Criar um <mark>Ip Primário</mark></p>
+                                        <img src="assets/images/modulo01_aula02_02.png" alt="">
+                                        <p>Sempre Crie o <mark>IPv4</mark> e Sempre escolha <mark>Ashburn, VA</mark> que é um servidor no Estados Unido, e nomeie seu <mark>ip</mark></p>
+                                        <img src="assets/images/modulo01_aula02_03.png" alt="">
+                                        <p>Faça uma <mark>Network</mark>, que é uma rede privada para suas APIs, Escolha <mark>us-east</mark></p>
+                                        <img src="assets/images/modulo01_aula02_04.png" alt="">
+                                        <p>Crie um <mark>Placement Group</mark>, que é um sistema que toda vez que você criar uma nova <mark>VPS</mark> ele vai alocar em uma maquina fisica diferente, para se caso uma das suas <mark>VPSs</mark> estiver em manutenção somente ela vai sair do ar e não as outras</p>
+                                        <img src="assets/images/modulo01_aula02_05.png" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 03 - Criando uma VPS na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>Clique em <mark>Add Server</mark></p>
+                                        <img src="assets/images/modulo01_aula03_01.png" alt="">
+                                        <p>Escolha <mark>Ashburn, VA us-east</mark> e o sistema <mark>Debian</mark></p>
+                                        <img src="assets/images/modulo01_aula03_02.png" alt="">
+                                        <img src="assets/images/modulo01_aula03_03.png" alt="">
+                                        <p>Escolha <mark>x86 (Intel/AMD)</mark> e o plano que você quer usar, se é <mark>compartilhado</mark> <small><i>( Performance Variada Boa Para testes )</i></small> ou <mark>Dedicada</mark> <small><i>( Performance Fixa e mais caro, boa para produção )</i></small></p>
+                                        <img src="assets/images/modulo01_aula03_04.png" alt="">
+                                        <p>O mínimo compartilhado recomendado é esse</p>
+                                        <img src="assets/images/modulo01_aula03_05.png" alt="">
+                                        <p>Escolha o <mark>Ipv4</mark> que você alocou para essa <mark>VPS</mark></p>
+                                        <div>
+                                            <img src="assets/images/modulo01_aula03_06.png" alt=""> <mark>Sempre Desmarcar o Ipv6</mark>
+                                        </div>
+                                        <p>Escolha a <mark>rede privada</mark> que você criou mais cedo</p>
+                                        <img src="assets/images/modulo01_aula03_07.png" alt="">
+                                        <p>A <mark>chave SSH</mark> é um item muito sensível, por isso não por no painel do servidor</p>
+                                        <img src="assets/images/modulo01_aula03_08.png" alt="">
+                                        <p>No modulo 1 não será abordado nem <mark>firewall</mark> e nem volumes</p>
+                                        <hr>
+                                        <p>Escolha o <mark>Placemente Group</mark> que você criou anteriormente</p>
+                                        <hr>
+                                        <p>Sempre habilite o <mark>Backup</mark></p>
+                                        <hr>
+                                        <p>Não usaremos <mark>Labels</mark> Nem <mark>Cloud Configs</mark></p>
+                                        <hr>
+                                        <p>O Nome é Importante, a sua primeira máquina deverá chamar <mark>Manager01</mark> porque a primeira máquina sempre vai ser um <mark>manager</mark></p>
+                                        <img src="assets/images/modulo01_aula03_09.png" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 04 - Configurando a Senha da VPS na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 05 - Configurando uma VPS para Banco de Dados</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 06 - Visão Geral da VPS da Hetzner</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 07 - Configurando um Backup na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 08 - Restaurando um Backup na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 09 - Configurando um Snapshot na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 10 - Restaurando um Snapshot na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 11 - Upgrade da VPS na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 12 - Formatando uma VPS na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary class="class-title">Aula 13 - Apagando VPS na Hetzner</summary>
+                                    <div class="notes">
+                                        <p>testtesttestsetstsetsetest</p>
+                                        <img src="assets/images" alt="">
+                                    </div>
+                            </details>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
