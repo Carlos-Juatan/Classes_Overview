@@ -71,3 +71,15 @@ img {
 ul {
     list-style-type: none;
 }
+
+.module-subtitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0 10px 60px;
+}
+
+.firewall-rules {
+    width: 40%;
+    margin: 0 auto;
+    text-align: left;
+}

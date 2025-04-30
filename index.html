@@ -21,187 +21,396 @@
             <div id="modules-list">
                 <details>
                     <summary class="module-title">MODULO 01. Configuração da VPS (OPSVPS)</summary>
-                    <ul id="class-list">
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 01 - Visão Geral da Hetzner Cloud</summary>
-                                <div class="class-content">
-                                    <div class="notes">
-                                        <p>Fazer uma conta na <mark>Hetzner</mark></p>
-                                        <img src="assets/images/modulo01_aula01_01.png" alt="">
-                                    </div>
-                                </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 02 - Criando um Projeto na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>Faça um Novo Projeto</p>
-                                        <img src="assets/images/modulo01_aula02_01.png" alt="">
-                                        <p>Primeira coisa Criar um <mark>Ip Primário</mark></p>
-                                        <img src="assets/images/modulo01_aula02_02.png" alt="">
-                                        <p>Sempre Crie o <mark>IPv4</mark> e Sempre escolha <mark>Ashburn, VA</mark> que é um servidor no Estados Unido, e nomeie seu <mark>ip</mark></p>
-                                        <img src="assets/images/modulo01_aula02_03.png" alt="">
-                                        <p>Faça uma <mark>Network</mark>, que é uma rede privada para suas APIs, Escolha <mark>us-east</mark></p>
-                                        <img src="assets/images/modulo01_aula02_04.png" alt="">
-                                        <p>Crie um <mark>Placement Group</mark>, que é um sistema que toda vez que você criar uma nova <mark>VPS</mark> ele vai alocar em uma maquina fisica diferente, para se caso uma das suas <mark>VPSs</mark> estiver em manutenção somente ela vai sair do ar e não as outras</p>
-                                        <img src="assets/images/modulo01_aula02_05.png" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 03 - Criando uma VPS na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>Clique em <mark>Add Server</mark></p>
-                                        <img src="assets/images/modulo01_aula03_01.png" alt="">
-                                        <p>Escolha <mark>Ashburn, VA us-east</mark> e o sistema <mark>Debian</mark></p>
-                                        <img src="assets/images/modulo01_aula03_02.png" alt="">
-                                        <img src="assets/images/modulo01_aula03_03.png" alt="">
-                                        <p>Escolha <mark>x86 (Intel/AMD)</mark> e o plano que você quer usar, se é <mark>compartilhado</mark> <small><i>( Performance Variada Boa Para testes )</i></small> ou <mark>Dedicada</mark> <small><i>( Performance Fixa e mais caro, boa para produção )</i></small></p>
-                                        <img src="assets/images/modulo01_aula03_04.png" alt="">
-                                        <p>O mínimo compartilhado recomendado é esse</p>
-                                        <img src="assets/images/modulo01_aula03_05.png" alt="">
-                                        <p>Escolha o <mark>Ipv4</mark> que você alocou para essa <mark>VPS</mark></p>
-                                        <div>
-                                            <img src="assets/images/modulo01_aula03_06.png" alt=""> <mark>Sempre Desmarcar o Ipv6</mark>
+
+                    <details>
+                        <summary class="module-subtitle">Configuração da <mark>HATZNER</mark></summary>
+
+                        <ul id="class-list">
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 01 - Visão Geral da Hetzner Cloud</summary>
+                                    <div class="class-content">
+                                        <div class="notes">
+                                            <p>Fazer uma conta na <mark>Hetzner</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula01_01.png" alt="">
                                         </div>
-                                        <p>Escolha a <mark>rede privada</mark> que você criou mais cedo</p>
-                                        <img src="assets/images/modulo01_aula03_07.png" alt="">
-                                        <p>A <mark>chave SSH</mark> é um item muito sensível, por isso não por no painel do servidor</p>
-                                        <img src="assets/images/modulo01_aula03_08.png" alt="">
-                                        <p>No modulo 1 não será abordado nem <mark>firewall</mark> e nem volumes</p>
-                                        <hr>
-                                        <p>Escolha o <mark>Placemente Group</mark> que você criou anteriormente</p>
-                                        <hr>
-                                        <p>Sempre habilite o <mark>Backup</mark></p>
-                                        <hr>
-                                        <p>Não usaremos <mark>Labels</mark> Nem <mark>Cloud Configs</mark></p>
-                                        <hr>
-                                        <p>O Nome é Importante, a sua primeira máquina deverá chamar <mark>Manager01</mark> porque a primeira máquina sempre vai ser um <mark>manager</mark></p>
-                                        <img src="assets/images/modulo01_aula03_09.png" alt="">
-                                        <p>agora é só clicar no botão <mark>Create & Buy now</mark> para finalizar a criação da <mark>máquina</mark></p>
-                                        <img src="assets/images/modulo01_aula03_10.png" alt="">
-                                        <p>agora é só aguardar a rede ficar online, esse processo pode demorar alguns segundos ou minutos ou até mais</p>
-                                        <img src="assets/images/modulo01_aula03_11.png" alt="">
                                     </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 04 - Configurando a Senha da VPS na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>Ao criar um servidor na <mark>Hatzner</mark> você receberá um e-mail com o login e senha para fazer o primeiro acesso</p>
-                                        <img src="assets/images/modulo01_aula04_01.png" alt="">
-                                        <p>Abra o <mark>Terminal</mark> e digite <mark>root@[Ipv4_que_você_recebeu]</mark></p>
-                                        <img src="assets/images/modulo01_aula04_02.png" alt="">
-                                        <p>Ele vai perguntar se você quer continuar digite que sim e depois a <mark>senha que você recebeu</mark></p>
-                                        <img src="assets/images/modulo01_aula04_03.png" alt="">
-                                        <p>após esse processo, vai pedir pra você mudar a senha, digite novamente a <mark>senha recebida</mark> e digite 2 vezes a a <mark>senha nova</mark></p>
-                                        <img src="assets/images/modulo01_aula04_04.png" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 05 - Configurando uma VPS para Banco de Dados</summary>
-                                    <div class="notes">
-                                        <p>Criar uma nova <mark>máquina</mark> exclusiva para o banco de dados</p>
-                                        <img src="assets/images/modulo01_aula05_01.png" alt="">
-                                        <p>Coloque essa <mark>máquina</mark> na mesma cidade <mark>Ashburn, VA us-east</mark> e o sistema <mark>Debian</mark></p>
-                                        <img src="assets/images/modulo01_aula05_02.png" alt="">
-                                        <p>Escolha o plano para essa <mark>máquina</mark> no minimo <mark>3 cpus e 4GB</mark></p>
-                                        <img src="assets/images/modulo01_aula05_03.png" alt="">
-                                        <p>Desabilite o <mark>IPv6</mark> e deixe habilitado somente o <mark>IPv4</mark></p>
-                                        <hr>
-                                        <p>Marque a opção <mark>Private Network</mark> e escolha a rede que você criou anteriormente</p>
-                                        <hr>
-                                        <p>Pule o <mark>SSR Key</mark>, o <mark>Volumes</mark> e o <mark>firewall</mark></p>
-                                        <hr>
-                                        <p>habilite o <mark>Backup</mark></p>
-                                        <hr>
-                                        <p>Habilite e escolha o <mark>Placement Group</mark></p>
-                                        <hr>
-                                        <p>Ignore o <mark>Label</mark> e o <mark>Coud Config</mark></p>
-                                        <hr>
-                                        <p>E nomeio a <mark>máquina</mark> do seu banco de dados</p>
-                                        <img src="assets/images/modulo01_aula05_04.png" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 06 - Visão Geral da VPS da Hetzner</summary>
-                                    <div class="notes">
-                                        <p>Visão geral do que temos até agora e de alguns paineis da <mark>Hatzner</mark></p>
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 07 - Configurando um Backup na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>testtesttestsetstsetsetest</p>
-                                        <img src="assets/images" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 08 - Restaurando um Backup na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>testtesttestsetstsetsetest</p>
-                                        <img src="assets/images" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 09 - Configurando um Snapshot na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>testtesttestsetstsetsetest</p>
-                                        <img src="assets/images" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 10 - Restaurando um Snapshot na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>testtesttestsetstsetsetest</p>
-                                        <img src="assets/images" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 11 - Upgrade da VPS na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>testtesttestsetstsetsetest</p>
-                                        <img src="assets/images" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 12 - Formatando uma VPS na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>testtesttestsetstsetsetest</p>
-                                        <img src="assets/images" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                        <li>
-                            <details>
-                                <summary class="class-title">Aula 13 - Apagando VPS na Hetzner</summary>
-                                    <div class="notes">
-                                        <p>testtesttestsetstsetsetest</p>
-                                        <img src="assets/images" alt="">
-                                    </div>
-                            </details>
-                        </li>
-                    </ul>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - Criando um Projeto na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>Faça um Novo Projeto</p>
+                                            <img src="assets/images/modulo01_etapa01_aula02_01.png" alt="">
+                                            <p>Primeira coisa Criar um <mark>Ip Primário</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula02_02.png" alt="">
+                                            <p>Sempre Crie o <mark>IPv4</mark> e Sempre escolha <mark>Ashburn, VA</mark> que é um servidor no Estados Unido, e nomeie seu <mark>ip</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula02_03.png" alt="">
+                                            <p>Faça uma <mark>Network</mark>, que é uma rede privada para suas APIs, Escolha <mark>us-east</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula02_04.png" alt="">
+                                            <p>Crie um <mark>Placement Group</mark>, que é um sistema que toda vez que você criar uma nova <mark>VPS</mark> ele vai alocar em uma maquina fisica diferente, para se caso uma das suas <mark>VPSs</mark> estiver em manutenção somente ela vai sair do ar e não as outras</p>
+                                            <img src="assets/images/modulo01_etapa01_aula02_05.png" alt="">
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Criando uma VPS na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>Clique em <mark>Add Server</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula03_01.png" alt="">
+                                            <p>Escolha <mark>Ashburn, VA us-east</mark> e o sistema <mark>Debian</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula03_02.png" alt="">
+                                            <img src="assets/images/modulo01_etapa01_aula03_03.png" alt="">
+                                            <p>Escolha <mark>x86 (Intel/AMD)</mark> e o plano que você quer usar, se é <mark>compartilhado</mark> <small><i>( Performance Variada Boa Para testes )</i></small> ou <mark>Dedicada</mark> <small><i>( Performance Fixa e mais caro, boa para produção )</i></small></p>
+                                            <img src="assets/images/modulo01_etapa01_aula03_04.png" alt="">
+                                            <p>O mínimo compartilhado recomendado é esse</p>
+                                            <img src="assets/images/modulo01_etapa01_aula03_05.png" alt="">
+                                            <p>Escolha o <mark>Ipv4</mark> que você alocou para essa <mark>VPS</mark></p>
+                                            <div>
+                                                <img src="assets/images/modulo01_etapa01_aula03_06.png" alt=""> <mark>Sempre Desmarcar o Ipv6</mark>
+                                            </div>
+                                            <p>Escolha a <mark>rede privada</mark> que você criou mais cedo</p>
+                                            <img src="assets/images/modulo01_etapa01_aula03_07.png" alt="">
+                                            <p>A <mark>chave SSH</mark> é um item muito sensível, por isso não por no painel do servidor</p>
+                                            <img src="assets/images/modulo01_etapa01_aula03_08.png" alt="">
+                                            <p>No modulo 1 não será abordado nem <mark>firewall</mark> e nem volumes</p>
+                                            <hr>
+                                            <p>Escolha o <mark>Placemente Group</mark> que você criou anteriormente</p>
+                                            <hr>
+                                            <p>Sempre habilite o <mark>Backup</mark></p>
+                                            <hr>
+                                            <p>Não usaremos <mark>Labels</mark> Nem <mark>Cloud Configs</mark></p>
+                                            <hr>
+                                            <p>O Nome é Importante, a sua primeira máquina deverá chamar <mark>Manager01</mark> porque a primeira máquina sempre vai ser um <mark>manager</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula03_09.png" alt="">
+                                            <p>agora é só clicar no botão <mark>Create & Buy now</mark> para finalizar a criação da <mark>máquina</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula03_10.png" alt="">
+                                            <p>agora é só aguardar a rede ficar online, esse processo pode demorar alguns segundos ou minutos ou até mais</p>
+                                            <img src="assets/images/modulo01_etapa01_aula03_11.png" alt="">
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Configurando a Senha da VPS na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>Ao criar um servidor na <mark>Hatzner</mark> você receberá um e-mail com o login e senha para fazer o primeiro acesso</p>
+                                            <img src="assets/images/modulo01_etapa01_aula04_01.png" alt="">
+                                            <p>Abra o <mark>Terminal</mark> e digite <mark>root@[Ipv4_que_você_recebeu]</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula04_02.png" alt="">
+                                            <p>Ele vai perguntar se você quer continuar digite que sim e depois a <mark>senha que você recebeu</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula04_03.png" alt="">
+                                            <p>após esse processo, vai pedir pra você mudar a senha, digite novamente a <mark>senha recebida</mark> e digite 2 vezes a a <mark>senha nova</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula04_04.png" alt="">
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Configurando uma VPS para Banco de Dados</summary>
+                                        <div class="notes">
+                                            <p>Criar uma nova <mark>máquina</mark> exclusiva para o banco de dados</p>
+                                            <img src="assets/images/modulo01_etapa01_aula05_01.png" alt="">
+                                            <p>Coloque essa <mark>máquina</mark> na mesma cidade <mark>Ashburn, VA us-east</mark> e o sistema <mark>Debian</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula05_02.png" alt="">
+                                            <p>Escolha o plano para essa <mark>máquina</mark> no minimo <mark>3 cpus e 4GB</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula05_03.png" alt="">
+                                            <p>Desabilite o <mark>IPv6</mark> e deixe habilitado somente o <mark>IPv4</mark></p>
+                                            <hr>
+                                            <p>Marque a opção <mark>Private Network</mark> e escolha a rede que você criou anteriormente</p>
+                                            <hr>
+                                            <p>Pule o <mark>SSR Key</mark>, o <mark>Volumes</mark> e o <mark>firewall</mark></p>
+                                            <hr>
+                                            <p>habilite o <mark>Backup</mark></p>
+                                            <hr>
+                                            <p>Habilite e escolha o <mark>Placement Group</mark></p>
+                                            <hr>
+                                            <p>Ignore o <mark>Label</mark> e o <mark>Coud Config</mark></p>
+                                            <hr>
+                                            <p>E nomeio a <mark>máquina</mark> do seu banco de dados</p>
+                                            <img src="assets/images/modulo01_etapa01_aula05_04.png" alt="">
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 06 - Visão Geral da VPS da Hetzner</summary>
+                                        <div class="notes">
+                                            <p>Visão geral do que temos até agora e de alguns paineis da <mark>Hatzner</mark></p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 07 - Configurando um Backup na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>Se você não tiver criado o servidor com <mark>backup</mark> você pode habilita-lo na aba <mark>backup da Hatzner</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula07_01.png" alt="">
+                                            <p>você só pode ter <mark>7 backups</mark> no total, eles são feitos de forma automatica todo dia mas pode fazer manual se precisar</p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 08 - Restaurando um Backup na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>O <mark>backup</mark> tem um preço fixo que é 20% do custo do servidor e é automático e você pode restaurar um backup nos 3 pontinhos e em restaurar</p>
+                                            <img src="assets/images/modulo01_etapa01_aula08_01.png" alt="">
+                                            <p>Você vai receber um <mark>e-mail</mark> com a nova senha</p>
+                                            <hr>
+                                            <p>Você também pode fazer um <mark>outro</mark> servidor a partir do seu backup <small><i>( Ideal para testes )</i></small> </p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 09 - Configurando um Snapshot na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>Diferente do backup, o <mark>snapshot</mark> é cobrado por giga <small><i>( €0.011/GB/mês )</i></small>, e é manual</p>
+                                            <hr>
+                                            <p>Sempre que for fazer alguma <mark>manutenção</mark> no servidor <mark>desliga a máquina</mark> e faz um snapshot, assim que  a manutenção tiver <mark>terminado</mark> se estiver <mark>funcionando bem</mark> por um dia ou uma hora, então <mark>deleta a snapshot</mark></p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 10 - Restaurando um Snapshot na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>Para restaurar o <mark>snapshot</mark> é o mesmo processo do <mark>backup</mark> e também receberá um <mark>e-mail</mark> com o novo login e senha</p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 11 - Upgrade da VPS na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>Você pode fazer <mark>Upgrade</mark> no servidor, se a opção <mark>CPU and RAM only</mark> estiver marcada esse upgrade é temporário, podendo voltar fazendo um <mark>downgrade</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula11_01.png" alt="">
+                                            <p>Se não estiver marcado, o upgrade vai ser do <mark>dico</mark> também e é permanente e você não pode voltar para a máquina com <mark>disco</mark> menor</p>
+                                            <hr>
+                                            <p><mark>Antes de fazer um upgrade ou downgrade desligar a máquina antes</mark></p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 12 - Formatando uma VPS na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>É possível <mark>Formatar</mark> o servidor na aba <mark>rebuild</mark> ele vai apagar todos os dados do <mark>disco</mark> mas vai manter todas as configurações do servido como o ip, Network e etc.</p>
+                                            <img src="assets/images/modulo01_etapa01_aula12_01.png" alt="">
+                                            <p>Quando for formatar é só escolher a distribuição que você quer, como por exemplo o <mark>debian12</mark></p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 13 - Apagando VPS na Hetzner</summary>
+                                        <div class="notes">
+                                            <p>É possivel deletar <mark>máquinas</mark> na aba <mark>delete</mark></p>
+                                            <img src="assets/images/modulo01_etapa01_aula13_01.png" alt="">
+                                            <p>Vai perguntar se você também quer deletar o <mark>IPv4</mark> usado na máquina também</p>
+                                            <img src="assets/images/modulo01_etapa01_aula13_02.png" alt="">
+                                        </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Configuração do <mark>Digital Ocean</mark></summary>
+                        <p>Esse módulo eu assistir mais decidir não fazer nenhuma anotação sobre, pelo menos por enquanto</p>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Configurando o <mark>Firewall</mark></summary>
+                        
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 01 - Visão Geral do Firewall</summary>
+
+                                        <div class="notes">
+                                            <p>A importancia de ter um <mark>firewall</mark> ativo</p>
+                                            <hr>
+                                            <p>O firewall tradicional opera diretamente na sua VPS e, ao ser confrontado com ataques como bots que enviam uma quantidade massiva de requisições, consome os recursos da sua máquina, como CPU e memória. Isso é um problema, especialmente se você está tentando economizar e já está no limite do desempenho da sua VPS.</p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - O que é <mark>edge firewall</mark></summary>
+
+                                        <div class="notes">
+                                            <p>o edge firewall é uma solução na nuvem que se concentra em proteger a sua infraestrutura antes que as requisições cheguem à sua VPS. Ele é configurado diretamente no provedor de serviços, como DigitalOcean ou Hetzner, permitindo que esse fornecedor gerencie as tentativas de invasão e gaste os recursos da nuvem em vez dos seus. Isso não só melhora a segurança, mas também otimiza a performance da sua VPS.</p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Configurando o Firewall no <mark>Digital Ocean</mark></summary>
+
+                                        <div class="notes">
+                                            <p>Não pretendo usar o <mark>Digital Ocean</mark></p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Configurando o Firewall no <mark>Hetzner</mark></summary>
+
+                                        <div class="notes">
+                                            <p>Comece a configurar o seu <mark>firewall</mark> apagando todas as regras que vem nele</p>
+                                            <hr>
+                                            <p>Crie uma regra do <mark>TCP porta 22</mark> e cole os <mark>IPV4s</mark> das <mark>máquinas</mark> do seu servidor e o do <mark>seu próprio computador</mark></p>
+                                            <img src="assets/images/modulo01_etapa03_aula04_01.png" alt="">
+                                            <p>Crie mais 2 regras uma para o <mark>HTTP e HTTPS</mark> usando as portas <mark>80 e 443</mark> e deixe aberto para todos colocando os <mark>IPV4 e IPV6</mark> </p>
+                                            <img src="assets/images/modulo01_etapa03_aula04_02.png" alt="">
+                                            <div class="firewall-rules">
+                                                <h3>Portas obrigatórias para configurar o Firewall</h3>
+                                                <br><p> Porta TCP 22: Porta que permite acessar SSH
+                                                <br> Porta TCP 80: Porta Http
+                                                <br> Porta TCP 443:	Porta Https / SSL
+                                                <br> Porta TCP 2377: Para comunicação entre workers e managers
+                                                <br> Porta TCP 2376: TCP para comunicação entre workers e managers
+                                                <br> Porta TCP 7946: Para descoberta de nodes de rede de Overlay
+                                                <br> Porta UDP 7946: Para descoberta de nodes de rede de Overlay
+                                                <br> Porta UDP 4789: Rede Overlay do Docker Swarm
+                                                <br> Porta TCP 9001: Porta interna do Portainer Agent
+                                                <br> Porta TCP 9443: Porta interna do Portainer Agent com SSL</p>
+
+                                                <br><h3>Portas Opcionais para configurar no Firewall</h3>
+                                                <br><p> Porta TCP 3306: Porta para MySQL para Acesso Remoto
+                                                <br> Porta TCP 5432: Porta para Postgres para Acesso Remoto
+                                                <br> Porta TCP 5672: Porta para o RabbitMQ para Acesso Remoto
+                                                <br> Porta TCP 6379: Porta para o Redis para Acesso Remoto
+                                                <br> Porta TCP 27017: Porta para o MongoDB</p>
+                                            </div>
+                                            <img src="assets/images/modulo01_etapa03_aula04_03.png" alt="">
+                                            <p>Terminando de configurar, desça a página até a opção <mark>Apply To</mark> marque e selecione o servidor</p>
+                                        </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Acesso via SSH da VPS com <mark>Termius</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 01 - Visão Geral do Termius</summary>
+
+                                        <div class="notes">
+                                            <p>Tem uma versão gratuita, mas para trabalhar disso o ideal é ter o plano pago</p>
+                                            <hr>
+                                            <p>Caso queira o plano pago, pegue o plano movel que é muito mais barato</p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - Configurações Gerais do Termius</summary>
+
+                                        <div class="notes">
+                                            <p>Você pode fazer login em uma conta gratuita, para deixar salvo suas configurações e preferências</p>
+                                            <hr>
+                                            <p>Nas configurações de <mark>Terminal</mark> habilitar o <mark>autocomplete</mark></p>
+                                            <p>Na aba lateral <mark>Theme</mark> colocar em <mark>auto</mark> ou <mark>dark mode</mark></p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Cadastrando Senhas do <mark>Termius</mark></summary>
+
+                                        <div class="notes">
+                                            <p>Na aba lateral <mark>Keychain</mark></p>
+                                            <img src="assets/images/modulo01_etapa04_aula03_01.png" alt="">
+                                            <p>No menu de cima ao clicar em <mark>KEY</mark> selecione <mark>New Identity</mark></p>
+                                            <img src="assets/images/modulo01_etapa04_aula03_02.png" alt="">
+                                            <p>Então Nomeie a credencial para algo que esteja alinhado com o projeto, coloque o <mark>root</mark> clique em mais e adicione um <mark>password</mark> e nele digite a senha do seu servidor</p>
+                                            <img src="assets/images/modulo01_etapa04_aula03_03.png" alt="">
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Configurando Acesso <mark>SSH</mark> de uma <mark>VPS</mark></summary>
+
+                                        <div class="notes">
+                                            <p>Na aba lateral <mark>Hosts</mark></p>
+                                            <hr>
+                                            <p>No menu de cima ao clicar em <mark>HOST</mark> selecione <mark>New Host</mark></p>
+                                            <hr>
+                                            <p>Coloque o <mark>nome</mark> ou o <mark>IPv4</mark> do servidor, dê um nome para esse acesso <small><i>( de preferência o mesmo nome do servidor )</i></small>, coloque <mark>tags</mark> para ficar mais fácil de achar esse acesso depois, e em <mark>SSH on</mark> coloque a porta do acesso SSH que é 22 por padrão, e clique em <mark>See More</mark> e selecione a credencial que você criou anteriormente</p>
+                                            <img src="assets/images/modulo01_etapa04_aula04_01.png" alt="">
+                                            <p>Ao clicar para acessar ele vai pedir o <mark>Fingerprint</mark> que nem pede no terminal é só adicionar e continuar</p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Configurando Acesso <mark>SFTP</mark> de uma <mark>VPS</mark></summary>
+
+                                        <div class="notes">
+                                            <p>Na aba lateral <mark>SFTP</mark> é um recurso de gerenciamento de arquivos entre server e host, permitindo a transferência de aquivos só clicando e arrastando para as pastas</p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 09 - Acesso <mark>SSH</mark> via Windows 11</summary>
+
+                                        <div class="notes">
+                                            <p>Na loja do Windows instalar o <mark>Terminal</mark></p>
+                                            <hr>
+                                            <p>No <mark>menu inicial</mark> pesquisar por <mark>Recursos Opcionais</mark> então pesquisar por <mark>SSH</mark> e instale ambos o <mark>Cliente OpenSSH</mark> e o <mark>Server OpenSSH</mark></p>
+                                            <hr>
+                                            <p>Ao finalizar a instalação do <mark>Cliente OpenSSH</mark> será possível usar o comando <mark>SSH</mark> vai estar disponivel no <mark>Terminal</mark> do windows <small><i>( O comando é SSH [nome do root]@[IPv4 do servidor] )</i></small></p>
+                                            <img src="assets/images/modulo01_etapa04_aula09_01.png" alt="">
+                                            <p>Ao digitar o comando ex:<sup>root@5.161.234.171</sup> confirme o <mark>Fingerprint</mark> digitando <mark>yes</mark> no terminal e por fim a <mark>senha do servidor</mark>, assim você terá acesso ao servidor usando o windows</p>
+                                        </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Configuração do <mark>Cloudflare</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - Visão Geral do Cloudflare</summary>
+
+                                        <div class="notes">
+                                            <p>Crie uma conta no <mark>Cloudflare</mark></p>
+                                        </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Configurando o Cloudflare</summary>
+
+                                        <div class="notes">
+                                            <p>Adicione o domínio que você quer usar</p>
+                                            <img src="assets/images/modulo01_etapa05_aula03_01.png" alt="">
+                                            <p>Insira seu domínio</p>
+                                            <hr>
+                                            <p>Escolha o plano gratuito</p>
+                                            <hr>
+                                            <p>Ele vai fazer uma varredura no seu <mark>domínio</mark> e adicionar os registros DNS que ele encontrar</p>
+                                            <hr>
+                                            <p>Depois disso, ele vai informar o seu <mark>name server</mark>, você provavelmente estará usando um <mark>domínio</mark> BR, então vai no <mark>Registro Br</mark> informar que você usará esse <mark>Domínio</mark> no <mark>Cloud Flare</mark>, se o seu <mark>Domínio</mark> for novo, ok. Mas se ele tiver migrando o <mark>domínio</mark> para o <mark>cloud flare</mark>, o <mark>Registro Br</mark> demora 3 hrs para fazer qualquer mudancça de <mark>Domínio</mark>. <small><i>( Isso é uma limitação do próprio domínio br )</i></small></p>
+                                            <hr>
+                                            <p>Depois do <mark>Registro Br</mark> liberar para trocar os <mark>Nameservers</mark> <small><i>( Só libera depois de 3 hrs Caso tenha feito a migração )</i></small>, então troque os <mark>Nameservers</mark> do <mark>Registro Br</mark> usando os do <mark>Cloud Flare</mark></p>
+                                            <img src="assets/images/modulo01_etapa05_aula03_02.png" alt="">
+                                            <img src="assets/images/modulo01_etapa05_aula03_03.png" alt="">
+                                            <img src="assets/images/modulo01_etapa05_aula03_04.png" alt="">
+                                        </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
                 </details>
             </div>
         </section>
