@@ -83,3 +83,50 @@ ul {
     margin: 0 auto;
     text-align: left;
 }
+
+.bash-code-notes {
+    text-align: left;
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+.bash-code-notes-border{
+    background-color: #34352f;
+    width: 100%;
+    padding: 10px 0 0 0;
+    border-radius: 5px; /* Bordas arredondadas (opcional) */
+}
+
+.bash-code-notes-border h1{
+    -webkit-text-stroke: 0.1px #252525;
+    color: #fff;
+    margin: 0 0 10px 20px;
+}
+
+pre {
+    background-color: #050817; /* Cor de fundo cinza claro */
+    border: 1px solid #34352f; /* Borda sutil */
+    color: #1B8F1B; /* Cor do texto (branco) */
+    padding: 10px 10px 10px 40px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas (opcional) */
+    overflow-x: auto; /* Adiciona barra de rolagem horizontal se o código for longo */
+}
+
+code {
+    font-family: monospace, monospace; /* Fonte monoespaçada */
+    display: block; /* Faz o <code> ocupar toda a largura do <pre> */
+    white-space: pre; /* Preserva espaços e quebras de linha */
+    padding: 0; /* Remove qualquer padding extra do <code> */
+    margin: 0; /* Remove qualquer margem extra do <code> */
+}
+
+.classes-notes-explications {
+    text-align: left;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.blue-mark {
+    color: blue;
+}

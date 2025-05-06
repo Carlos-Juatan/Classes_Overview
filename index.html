@@ -565,6 +565,368 @@
                                     </div>
                                 </details>
                             </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Configuração do <mark>Docker Swarm</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Lembrete sobre o Firewall</summary>
+
+                                    <div class="class-notes">
+                                        <p>Você terá que configurar todos os <mark>firewalls</mark></p>
+                                        <img src="assets/images/modulo01_etapa07_aula03_01.png" alt="">
+                                        <img src="assets/images/modulo01_etapa07_aula03_02.png" alt="">
+                                        <img src="assets/images/modulo01_etapa07_aula03_03.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Instalação e Configuração do Docker</summary>
+
+                                    <div class="class-notes">
+                                        <p>Abra o <mark>SSH</mark> do seu manager usando o <mark>Termius</mark> e cole o comando.</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Docker GPG key</h1><pre><code class="language-bash">
+apt-get update
+apt install -y sudo gnupg2 wget ca-certificates apt-transport-https curl gnupg nano htop
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois copie e cole o código, para definir os recursos do Docker.</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Docker Apt sources</h1><pre><code class="language-bash">
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |
+  sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+sudo apt-get update
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois copie e cole o código para instalar o Docker.</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Docker Install</h1><pre><code class="language-bash">
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois copie e cole o código, para coloca o docker para iniciar com o sistema.</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Docker como serviço</h1><pre><code class="language-bash">
+sudo systemctl start docker.service
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois copie e cole o código, para coloca o container id para iniciar com o sistema.</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - container id iniciar com o sistema</h1><pre><code class="language-bash">
+sudo systemctl enable containerd.service
+                                            </code></pre></div>
+                                        </div>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Ativação do Modo Swarm no Docker</summary>
+
+                                    <div class="class-notes">
+                                        <p>Ainda no manager do seu <mark>SSH</mark> copie e cole o código para iniciar o modo <mark>Swarm</mark> do Docker</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Inicia o Swarm</h1><pre><code class="language-bash">
+docker swarm init --advertise-addr=000000
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p><mark>Nota: onde tiver 000000 trocar para o ip do SSH do manager</mark></p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Token do Swarm</h1><pre><code class="language-bash">
+docker swarm init --advertise-addr=45.185.229.160
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Para adicionar mais um manager copie e cole o código que aparecer no <mark>terminal</mark></p>
+                                        <br>
+                                        <img src="assets/images/modulo01_etapa07_aula05_01.png" alt="">
+                                        <br>
+                                        <p>Agora para adicionar uma <mark>rede</mark> para o <mark>Swarm</mark></p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Rede do Swarm</h1><pre><code class="language-bash">
+                                                docker network create --driver=overlay network_swarm_public
+                                            </code></pre></div>
+                                        </div>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 07 - Configurando o Traefik 2</summary>
+
+                                    <div class="class-notes">
+                                        <p>Abra o <mark>Termius</mark> na barra lateral selecione o <mark>SFTP</mark> abra a pasta onde está o <mark>stack do traefik 2</mark> então escolha o servidor <mark>Manager</mark>, você só fará essa configuração no <mark>Manager</mark></p>
+                                        <img src="assets/images/modulo01_etapa07_aula07_01.png" alt="">
+                                        <p>Depois de escolher o <mark>servidor Manager</mark> clique e arrate o arquivo <mark>traefik-v2.yaml</mark> para dentro do <mark>SSH</mark></p>
+                                        <img src="assets/images/modulo01_etapa07_aula07_02.png" alt="">
+                                        <p>Depois de colar o arquivo na aba lateral vá em <mark>Hosts</mark> e entre no <mark>Teminal do SSH Manager</mark> e cole o comando para fazer o download da imagem do traefik v2</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Download Traefik 2</h1><pre><code class="language-bash">
+docker pull traefik:v2.11.3
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Agora copie e cole o comando para executa o stack do Traefik v2</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Executa o stack do Traefik v2</h1><pre><code class="language-bash">
+docker stack deploy --prune --detach=false --resolve-image always -c traefik-v2.yaml traefik
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p class="classes-notes-explications">
+                                            <mark class="blue-mark">docker stack deploy</mark> = comando para executar o stack do docker<br><br>
+                                            <mark class="blue-mark">--prune</mark> = para remover os serviços que não estão mais em uso. <mark>É o mesmo comando tanto para lançar como para atualizar</mark><br><small><i>( Se não exitir ele cria e se existir ele autaliza )</i></small><br><br>
+                                            <mark class="blue-mark">--detach=false</mark> = para não rodar em segundo plano <br><small><i>( Para poder ver em tempo real todas as informações na tela )</i></small><br><br>
+                                            <mark class="blue-mark">--resolve-image always</mark> = para sempre baixar a imagem mais atualizada<br><br>
+                                            <mark class="blue-mark">-c</mark> = para indicar o arquivo de configuração <br><small><i>( Que no caso é o traefik-v2.yaml )</i></small><br><br>
+                                            <mark class="blue-mark">traefik-v2.yaml</mark> = nome do arquivo de configuração<br><br>
+                                            <mark class="blue-mark">traefik</mark> = nome do stack <br><small><i>( Nome que ele vai ficar no docker )</i></small><br><br>
+                                        </p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 08 - Atualizando o Traefik 2</summary>
+
+                                    <div class="class-notes">
+                                        <p>Vai no seu aquivo <mark>traefik-v2.yaml</mark> e atualize a versão para a nova versão</p>
+                                        <img src="assets/images/modulo01_etapa07_aula08_01.png" alt="">
+                                        <p>No <mark>Termius</mark> na aba lateral <mark>SFTP</mark> selecione o arquivo <mark>traefik-v2.yaml</mark> com a nova versão e arraste para o <mark>SSH do manager</mark> onde estava o arquivo anterior</p>
+                                        <img src="assets/images/modulo01_etapa07_aula08_02.png" alt="">
+                                        <p>E substitua o aqruivo pelo novo</p>
+                                        <img src="assets/images/modulo01_etapa07_aula08_03.png" alt="">
+                                        <p>Depois na aba lateral <mark>Hosts</mark> abra o <mark>Terminal</mark> do manager e copie e cole o comando para atualizar</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Atualiza o stack do Traefik v2</h1><pre><code class="language-bash">
+docker stack deploy --prune --detach=false --resolve-image always -c traefik-v2.yaml traefik
+                                            </code></pre></div>
+                                        </div>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 09 - Instalação e Configuração do Portainer</summary>
+
+                                    <div class="class-notes">
+                                        <p>Va no <mark>Cloud Flare</mark> e adcione um novo link do tipo <mark>CNAME</mark> fazendo o link para o <mark>Link A do SSH</mark> e nomeie de <mark>painel</mark></p>
+                                        <img src="assets/images/modulo01_etapa07_aula09_01.png" alt="">
+                                        <p>No arquivo <mark>portainer.yaml</mark> troque a parte do endereço <mark>Hort</mark> para o link criado do <mark>Cloud Flare</mark></p>
+                                        <img src="assets/images/modulo01_etapa07_aula09_02.png" alt="">
+                                        <img src="assets/images/modulo01_etapa07_aula09_03.png" alt="">
+                                        <p>Agora na janela <mark>SFTP do Teminus</mark> passe o <mark>portainer.yaml</mark> para o <mark>SSH Manager</mark></p>
+                                        <img src="assets/images/modulo01_etapa07_aula09_04.png" alt="">
+                                        <p>Agora na aba <mark>Hosts</mark> abra o terminal do <mark>SSH</mark> do manager e copie e cole o comando para baixar a imagem do portainer</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Download da imagem do Portainer</h1><pre><code class="language-bash">
+docker pull portainer/portainer-ce:sts
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Agora copie e cole o comando para intalar a imagem do <mark>Portainer</mark></p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Acessa o painel do Portainer</h1><pre><code class="language-bash">
+docker stack deploy --prune --detach=false --resolve-image always -c portainer.yaml portainer
+                                            </code></pre></div>
+                                        </div>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 10 - Atualizando o Portainer</summary>
+
+                                    <div class="class-notes">
+                                        <p>Abra o arquivo <mark>portainer.yaml</mark> e atualize a versão do portaier e do agente</p>
+                                        <img src="assets/images/modulo01_etapa07_aula10_01.png" alt="">
+                                        <p>Depois abra a aba <mark>SFTP</mark> do <mark>Termius</mark> abra a pasta local onde o arquivo <mark>portainer.yaml</mark> foi salvo, arraste e substitua o arquivo no <mark>SSH do manager</mark></p>
+                                        <img src="assets/images/modulo01_etapa07_aula10_02.png" alt="">
+                                        <p>E agora abra a aba <mark>Hosts</mark> e abra o <mark>SSH do manager</mark> e copie e cole o código para atualizar o portainer</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - atualizar o portainer</h1><pre><code class="language-bash">
+docker stack deploy --prune --detach=false --resolve-image always -c portainer.yaml portainer
+                                            </code></pre></div>
+                                        </div>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 11 - Adicionando um Node Worker no Docker Swarm</summary>
+
+                                    <div class="class-notes">
+                                        <p>Para instalar um worker basta abrir o <mark>Terminal do worker</mark> pelo Termius na aba <mark>Hosts</mark> copiar e colar o comando</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Docker GPG key</h1><pre><code class="language-bash">
+apt-get update
+apt install -y sudo gnupg2 wget ca-certificates apt-transport-https curl gnupg nano htop
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois copie e cole o código, para definir os recursos do Docker.</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Docker Apt sources</h1><pre><code class="language-bash">
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |
+  sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+sudo apt-get update
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois copie e cole o código para instalar o Docker.</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Docker Install</h1><pre><code class="language-bash">
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois copie e cole o código, para coloca o docker para iniciar com o sistema.</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Docker como serviço</h1><pre><code class="language-bash">
+sudo systemctl start docker.service
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois copie e cole o código, para coloca o container id para iniciar com o sistema.</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - container id iniciar com o sistema</h1><pre><code class="language-bash">
+sudo systemctl enable containerd.service
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p><mark>Em uma server worker não se instala o Docker Swarm</mark></p>
+                                        <br>
+                                        <p>Quando foi instalado o docker no manager, o terminal deu um comando para fazer o link entre o manager e o worker, mas caso você não tenha anotado ou perdido a senha, vá no <mark>terminal do manager</mark> e digite o comando</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Token do Swarm</h1><pre><code class="language-bash">
+docker swarm join-token worker
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Copie o comando que o termianl der e cole no <mark>terminal do worker</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 12 - Configurando o ctop na VPS</summary>
+
+                                    <div class="class-notes">
+                                        <p>Para instalar o CStop copie e cole o comando</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Instalação do ctop</h1><pre><code class="language-bash">
+sudo apt-get install ca-certificates curl gnupg lsb-release
+curl -fsSL https://azlux.fr/repo.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/azlux-archive-keyring.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian \
+  $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/azlux.list >/dev/null
+sudo apt-get update
+sudo apt-get install docker-ctop
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p><mark>Instale ele em todas a máquinas, tanto nos managers como nos workers</mark></p>
+                                        <br>
+                                        <p>E para acessar o <mark>ctop</mark> basta digitar ´ctop´ no <mark>terminal</mark> de qualquer máquina e navegar usando as setas direita e esquerda do teclado</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Acessa o ctop</h1><pre><code class="language-bash">
+ctop
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Para sair do <mark>ctop</mark> basta apertar a tecla <mark>Q</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Gerenciando o <mark>Swarm</mark> com <mark>Portainer</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - Primeiro Acesso ao Portainer</summary>
+
+                                    <div class="class-notes">
+                                        <p>Não perda sua senha, use apps para gerenciar senhas, os <mark>gratuitos</mark> que não são apps para gerenciamento de senha mas que servem por serem gratuitos, tem o <mark>evernote</mark>, o <mark>clickup</mark> e o <mark>google keep</mark>, o promovaweb tem curso de <mark>segundo celebro</mark> para se aprofundar no assunto, e a melhro opção para gerenciar senha é uma ferramenta paga que chama <mark>1password</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Acessando o Ambiente Swarm no Portainer</summary>
+
+                                    <div class="class-notes">
+                                        <p>Na tela <mark>Home do portainer</mark> clicando no lapis de edição é possível editar algumas informações do ambiente</p>
+                                        <img src="assets/images/modulo01_etapa08_aula03_01.png" alt="">
+                                        <p>Coloque o nome <mark>manager ou o nome do seu cliente</mark></p>
+                                        <img src="assets/images/modulo01_etapa08_aula03_02.png" alt="">
+                                        <p><mark>Lembrando que ao adicionar mais máquinas será nescessário liberar o acesso dessas máquinas pelo firewall</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Gerenciando Stacks no Portainer</summary>
+
+                                    <div class="class-notes">
+                                        <p>Dentro do seu <mark>Ambiente</mark> na aba lateral <mark>Stacks</mark> adicione um novo stack</p>
+                                        <img src="assets/images/modulo01_etapa08_aula05_01.png" alt="">
+                                        <p>Copie e cole o <mark>arquivo yaml</mark> dê o mesmo nome do <mark>stack</mark> que tiver na <mark>imagem</mark> do seu arquivo yaml</p>
+                                        <img src="assets/images/modulo01_etapa08_aula05_02.png" alt="">
+                                        <p>Na parte de baixo não tem motivo de ativar o <mark>Acess Control</mark> na versão gratuita do <mark>portainer</mark> então basta desmarcar e e clicar em <mark>Deploy the Stack</mark></p>
+                                        <br>
+                                        <p>Todo stack criado pelo portainer pode ser editato pelo portainer</p>
+                                        <img src="assets/images/modulo01_etapa08_aula05_03.png" alt="">
+                                        <p>Nenhum dos seus stacks deve ter <mark>porta publica</mark>, todos devem ser gerenciados pelo própio <mark>traefik</mark></p>
+                                        <img src="assets/images/modulo01_etapa08_aula05_04.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
                     </details>
                 </details>
             </div>
