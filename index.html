@@ -923,9 +923,72 @@ ctop
                                         <img src="assets/images/modulo01_etapa08_aula05_03.png" alt="">
                                         <p>Nenhum dos seus stacks deve ter <mark>porta publica</mark>, todos devem ser gerenciados pelo própio <mark>traefik</mark></p>
                                         <img src="assets/images/modulo01_etapa08_aula05_04.png" alt="">
+                                        <p>Para atualizar o stack, copie e cole o novo <mark>arquivo yaml</mark> e marque a opção <mark>prune services</mark> isso vai apagar e atualizar o stack</p>
+                                        <img src="assets/images/modulo01_etapa08_aula05_05.png" alt="">
+                                        <p>Marque a opção <mark>Re-pull image and redeploy</mark> vai atualizar a imagem para a versão mais recente</p>
+                                        <img src="assets/images/modulo01_etapa08_aula05_06.png" alt="">
                                     </div>
                                 </details>
                             </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 09 - Gerenciamento de Containers no Portainer</summary>
+
+                                    <div class="class-notes">
+                                        <p>Nos serviços do portainer os que estiverem em cor verde, estão rodando, os que estiverem em vermelho estão parados, ou derram erro, e os que estiverem em azul tentaram iniciar e não conseguiram</p>
+                                        <br>
+                                        <p>Todas as vezes que um container parar, antes de apagar analize os logs para entender o porque paraou.</p>
+                                        <br>
+                                        <p>Para analizar com mais precisão o uso de memória, cpu e disco o serviço está usando vá em <mark>stats</mark> no container</p>
+                                        <img src="assets/images/modulo01_etapa08_aula06_01.png" alt="">
+                                        <p>Lá você consegue ver com mais precisão dados úteis para gerir o uso de recursos da sua máquina</p>
+                                        <img src="assets/images/modulo01_etapa08_aula06_02.png" alt="">
+                                        <p>Para acessar o <mark>terminal</mark> da aplicação você vai no container e em <mark>console</mark></p>
+                                        <img src="assets/images/modulo01_etapa08_aula06_03.png" alt="">
+                                        <p>Para abrir o <mark>console</mark> você pode escolher uma das 3 opções</p>
+                                        <img src="assets/images/modulo01_etapa08_aula06_04.png" alt="">
+                                        <p><mark>Tem aplicações que não possuem console</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 10 - Gerenciamento de Imagens no Portainer</summary>
+
+                                    <div class="class-notes">
+                                        <p>Ir em imagens de tempos em tempos para apagar imagens que não estão mais sendo utilizadas</p>
+                                        <br>
+                                        <p>Alguns containers podem estar parados e mesmo assim a imagem mostrar que está em uso, nesse caso apagar o container primeiro e depois a imagem, caso der erro ao apagar uma imagem, é porque o docker está usando algum recurso dela. Ai não pode apagar mesmo</p>
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Configuração do <mark>SendGrid</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 01 - Visão Geral do <mark>Sendgrid</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O <mark>SendGrid</mark> é um sistema para enviar e-mails em massa, a versão gratuita dele permite 100 e-mails por dia.</p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - Sobre a Burocracia do Sendgrid</summary>
+
+                                    <div class="class-notes">
+                                        <p><mark>Não crie uma conta utilizando o gmail, o hotmail ou outro que não seja proficional</mark></p>
+                                        <br>
+                                        <p>Você precisa de um <mark>e-mail proficional</mark> por exemplo no <mark>Google Workspace</mark>, mas é pago.</p>
+                                        <br>
+                                        <p>Alem disso você precisa de um site online, assim que você criar uma conta e configurar um domínio, esse domínio precisa de um site, e esse site pode ser em português e ser simples mas ele precisar ter Termos de serviço e políticas de privacidade</p>
+                                    </div>
+                                </details>
                         </ul>
                     </details>
                 </details>
