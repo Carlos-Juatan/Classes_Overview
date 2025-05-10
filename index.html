@@ -20,7 +20,7 @@
             
             <div id="modules-list">
                 <details>
-                    <summary class="module-title">MODULO 01. Configuração da VPS (OPSVPS)</summary>
+                    <summary class="module-title">MÓDULO 01. Configuração da VPS (OPSVPS)</summary>
 
                     <details>
                         <summary class="module-subtitle">Configuração da <mark>HATZNER</mark></summary>
@@ -989,6 +989,158 @@ ctop
                                         <p>Alem disso você precisa de um site online, assim que você criar uma conta e configurar um domínio, esse domínio precisa de um site, e esse site pode ser em português e ser simples mas ele precisar ter Termos de serviço e políticas de privacidade</p>
                                     </div>
                                 </details>
+                            </li>
+                        </ul>
+                    </details>
+                </details>
+                <details>
+                    <summary class="module-title">MÓDULO 02 - SETUP DAS APLICAÇÕES (STPAPP)</summary>
+
+                    <details>
+                        <summary class="module-subtitle">Estutura do <mark>Stack do Swarm</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Definição de Serviços no Stack</summary>
+
+                                    <div class="class-notes">
+                                        <p>Ao nomear o <mark>serviço</mark> na stack, o nome deve ser <mark>único</mark> e nunca utilizar letra maiúscula, espaço em branco, acento ou qualquer tipo de caracteres especiais, usar somente letra minúscula, números ou underline (_)</p>
+                                        <img src="assets/images/modulo02_etapa01_aula05_01.png" alt="">
+                                        <p>Para nomear escolhar o nome da aplicação ou o serviço dentro da aplicação</p>
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Configuração dos <mark>Sistemas Base</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 01 - Instalação do <mark>Postgres</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>A versão <mark>alpine</mark> é uma versão que vai receber pequenas aualizações, que para banco de dados não tem tanto problema. <small><i>( 1.3-alpine vai receber atualizações 1.3.1, 1.3.2 etc... mas não vai receber 1.4 como atualização)</i></small></p>
+                                        <br>
+                                        <p>Adicione uma senha forte</p>
+                                        <img src="assets/images/modulo02_etapa02_aula01_01.png" alt="">
+                                        <p>Abra o <mark>portainer</mark> e copie e cole o stack no nome stack, mudando o nome do stack para o mesmo nome do serviço</p>
+                                        <img src="assets/images/modulo02_etapa02_aula01_02.png" alt="">
+                                        <p>em baixo desmarcar a opção <mark>Acess Control</mark> e fazer o <mark>deploy</mark> do stack</p>
+                                        <img src="assets/images/modulo02_etapa02_aula01_03.png" alt="">
+                                        <p>Para acessar o <mark>terminal</mark> do Postgres usar o usuário <mark>Postgres</mark> para ficar mais fácil acessar o banco de dados</p>
+                                        <img src="assets/images/modulo02_etapa02_aula01_04.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Instalação do <mark>MongoDB</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Usar a <mark>evolution</mark> e o <mark>N8N</mark> com o <mark>MongoDB</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Instalação do <mark>Redis</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O <mark>Redis</mark> é um banco de dados em memória, ele é utilizado para cache, e não é necessário fazer backup dele, porque ele não armazena dados importantes</p>
+                                        <br>
+                                        <p>O <mark>Redis</mark> é utilizado para armazenar dados temporários, como por exemplo o token de autenticação do usuário, ou o token de acesso ao sistema</p>
+                                        <br>
+                                        <p>O <mark>n8n</mark> usa o <mark>redis</mark> para fazer fila, o <mark>chatwoot, wordpress</mark> e vários outros usando o <mark>redis</mark></p>
+                                        <br>
+                                        <p><mark>Ele é um sistema para otimizar o desenpenho do sistema</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 07 - Acesso Externo ao <mark>MongoDB</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Para acessar remotamente o <mark>MongoDB</mark> se usa o <mark>MongoDB Compass</mark> instalado no pc.</p>
+                                        <br>
+                                        <p>Lance um <mark>DNS</mark> apontando para o <mark>manager</mark> só para utilizar ele como um apelido para o <mark>banco de dados</mark> para não precisar usar um ip no <mark>MongoDB Compass</mark> pois não é proficional</p>
+                                        <img src="assets/images/modulo02_etapa02_aula07_01.png" alt="">
+                                        <p>Depois será nescessário usar o <mark>usuário e senha</mark></p>
+                                        <img src="assets/images/modulo02_etapa02_aula07_02.png" alt="">
+                                        <p>Você configura esse <mark>usuário e senhar</mark> no <mark>stack</mark></p>
+                                        <img src="assets/images/modulo02_etapa02_aula07_03.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 09 - Acesso Externo ao <mark>Postgres</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Para acessar o <mark>Postgres</mark> existem outras formas mas, a princípio ele recomenda usar o <mark>pgadmin</mark> instalado no seu pc</p>
+                                        <br>
+                                        <p>Abra o <mark>pgadmin</mark> e adicione um novo servidor</p>
+                                        <img src="assets/images/modulo02_etapa02_aula09_01.png" alt="">
+                                        <p>Dê um nome para o seu servidor</p>
+                                        <img src="assets/images/modulo02_etapa02_aula09_02.png" alt="">
+                                        <p>Na aba <mark>connection</mark> adicione o endereço do host, você pode marcar para salvar a senha e adicionar a senha, depois é só clicar em <mark>salvar</mark> que ele já vai fazer a concçao com o banco de dados</p>
+                                        <img src="assets/images/modulo02_etapa02_aula09_03.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 10 - Recuperação do <mark>Redis</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Em <mark>services</mark> abra o <mark>redis</mark> e desça até <mark>Mounts</mark> e apague o volume</p>
+                                        <img src="assets/images/modulo02_etapa02_aula10_01.png" alt="">
+                                        <p>Depois dê um <mark>apply changes</mark></p>
+                                        <img src="assets/images/modulo02_etapa02_aula10_02.png" alt="">
+                                        <p>O docker vai rodar o <mark>redis</mark> sem o volume, atualize a tela e apague o <mark>redis</mark> antigo</p>
+                                        <img src="assets/images/modulo02_etapa02_aula10_03.png" alt="">
+                                        <p>Depois vá em <mark>volumes</mark> e apague o volume do <mark>redis</mark></p>
+                                        <img src="assets/images/modulo02_etapa02_aula10_04.png" alt="">
+                                        <p>Depois vá em <mark>stacks</mark> e clique no <mark>redis</mark> e clique em <mark>update the stack</mark> para recriar o redis com o volume</p>
+                                        <img src="assets/images/modulo02_etapa02_aula10_05.png" alt="">
+                                        <p>Volte nos <mark>containers</mark> e no <mark>services</mark> e apague os que não estiverem mais funcionando</p>
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Setup <mark>N8N</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Configurando o <mark>DNS do N8N</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p><mark>Não use o nome n8n ou qualquer nome de serviço como link de endereço para sua aplicação</mark>, é questão de segurança não usar os nomes de serviço pois é mais fácil dos boots acharem</p>
+                                        <br>
+                                        <p>Para o <mark>editor</mark> use <mark>workflows</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula04_01.png" alt="">
+                                        <p>E para o <mark>n8n webhooks</mark> use <mark>webhooks</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula04_02.png" alt="">
+                                        <p>Para saber o endereço já <mark>propagou</mark> use o site <a href="https://mxtoolbox.com/">mxtoolbox.com</a></p>
+                                        <img src="assets/images/modulo02_etapa05_aula04_03.png" alt="">
+                                        <p>No canto superior direito tem uma opção <mark>all Tools</mark> clique nela</p>
+                                        <img src="assets/images/modulo02_etapa05_aula04_04.png" alt="">
+                                        <p>Em seguida escolha a opção <mark>cname</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula04_05.png" alt="">
+                                        <p>Após isso, digite o endereço que você acabou de criar no <mark>Cloudflare</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula04_06.png" alt="">
+                                        <p>Se ele achar o endereço, quer dizer que ele já propagou e você já pode fazer o restante do processo</p>
+                                        <img src="assets/images/modulo02_etapa05_aula04_07.png" alt="">
+                                        <p><mark>Se estiver escrito "DNS Record Not Published" e "DNS Record Not Found" não faça o deploy do stack ele vai tentar gerar o SSL e não vai funcionar, e isso vai causar punição de tempo onde na 5° tentativa fracassada vai ter que esperar 1 dia para tentar de novo</mark></p>
+                                    </div>
+                                </details>
+                            </li>
                         </ul>
                     </details>
                 </details>

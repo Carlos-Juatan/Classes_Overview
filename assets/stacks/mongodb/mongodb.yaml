@@ -1,0 +1,62 @@
+version: "3.7"
+
+services:
+  # Define o serviço do mongodb
+  mongodb:
+    # Usa a imagem do MongoDB no Docker Hub
+    image: mongo:7
+    # Define o hostname do container
+    hostname: "{{.Service.Name}}.{{.Task.Slot}}"
+    # Define o Comando de inicio do servidor do MongoDB
+    command: mongod --port 27017
+    # Define a rede que o container vai usar
+    networks:
+      - network_swarm_public
+    #ports:
+    #  - 27017:27017
+    # Define o volume que irá armazenar os dados do MongoDB
+    volumes:
+      - mongodb_data:/data/db # Dados do MongoDB
+      - mongodb_configdb_data:/data/configdb # Configurações do MongoDB
+      # - /mnt/HC_Volume_37142912/mongodb_data:/data/db # Dados do MongoDB
+      # - /mnt/HC_Volume_37142912/mongodb_configdb_data:/data/configdb # Configurações do MongoDB
+    # Define as variaveis de ambiente que o container vai usar
+    environment:
+      # Define o usuario root do MongoDB
+      - MONGO_INITDB_ROOT_USERNAME=USER
+      # Define a senha root do MongoDB
+      - MONGO_INITDB_ROOT_PASSWORD=SENHA
+      # Define as permissões de arquivos do MongoDB
+      - PUID=1000
+      # Define as permissões de arquivos do MongoDB
+      - PGID=1000
+    # define o modo de deploy do container
+    deploy:
+      # Define o modo de deploy do container
+      mode: replicated
+      # Define o numero de replicas do container (sempre 1)
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+          # - node.hostname == worker1
+      resources:
+        # Define os limites de recursos do container
+        limits:
+          # Define o limite de CPU do container
+          cpus: "1"
+          # Define o limite de memoria do container
+          memory: 1024M
+
+volumes:
+  mongodb_data:
+    external: true
+    name: mongodb_data
+  mongodb_configdb_data:
+    external: true
+    name: mongodb_configdb_data
+
+networks:
+  network_swarm_public:
+    external: true
+    name: network_swarm_public
