@@ -1,0 +1,69 @@
+{
+  "name": "Docker Swarm SMTP2HTTP Alunos copy",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "a64b6746-f89f-4a95-8a22-abc0345c17b4",
+        "options": {}
+      },
+      "id": "bdfb7f8e-8926-4a96-8e56-694dabde8ff1",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        740,
+        260
+      ],
+      "webhookId": "63d91a7d-e090-476e-b3b5-9027a9f58cd8"
+    },
+    {
+      "parameters": {
+        "sendHTML": true,
+        "subject": "={{ $json.body.subject }}",
+        "htmlContent": "={{ $json.body.body.html }}",
+        "sender": "contato@promovaweb.com",
+        "receipients": "={{ $json.body.addresses.to.address }}",
+        "additionalFields": {}
+      },
+      "id": "d0cb707b-99d2-4136-b1f6-ef2336e1cb60",
+      "name": "Brevo",
+      "type": "n8n-nodes-base.sendInBlue",
+      "typeVersion": 1,
+      "position": [
+        960,
+        260
+      ],
+      "credentials": {
+        "sendInBlueApi": {
+          "id": "FOvezSfaDFeq5Ziw",
+          "name": "promovaweb"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Brevo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a048163f-c03e-4c8a-9a87-46b50e191dd1",
+  "id": "QO4olb1FT6tOLEr6",
+  "meta": {
+    "instanceId": "33738330930e3881dd5571eca013f36ddf8aab20e4ea5c1f2ebaf4a2b4668ac6"
+  },
+  "tags": []
+}

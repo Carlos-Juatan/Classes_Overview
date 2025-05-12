@@ -1141,6 +1141,202 @@ ctop
                                     </div>
                                 </details>
                             </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Variáveis de Ambiente do N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>Para não dá problema quando precisar atualizar, os <mark>stacks</mark> estão separados, e quando for nescessário atualizar todos os <mark>stacks</mark> para não dá erro, atualizar primeiro o <mark>Editor</mark>, depois o <mark>Webhook</mark> e depois o <mark>Worker</mark></p>
+                                        <br>
+                                        <p>Editando o <mark>n8n Editor</mark> a variável que você não pode perder é a <mark>N8N_ENCRYPTION_KEY</mark> pois, é responsável pela criptografia com o banco de dados, se perder ela não será mais possível acessar o n8n</p>
+                                        <img src="assets/images/modulo02_etapa05_aula05_01.png" alt="">
+                                        <p>Para gerar uma nova senha pode usar o <a href="https://www.avast.com/random-password-generator#mac">avast random password generator usando pelo menos 20 caracteres</a></p>
+                                        <br>
+                                        <p><mark>Essa senha tem que ser a mesma em todos os stacks do n8n</mark></p>
+                                        <br>
+                                        <p>A variável <mark>N8N_HOST</mark> usa o endereço do workflows sem o http e sem a barra no final, já as variáveis <mark>N8N_EDITO_BASE_URL</mark> e <mark>WEBHOOK_URL</mark>, precisam do <mark>http</mark> e da <mark>barra no final</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula05_02.png" alt="">
+                                        <p>Nos <mark>labels do traefik</mark> mude o endereço do editor para o que será usado na instalação</p>
+                                        <img src="assets/images/modulo02_etapa05_aula05_03.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 06 - Configurando Usuários no N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>Para o uso de multiplos usuários no <mark>n8n</mark> se usa o serviço <mark>smtp2http</mark> que transforma a requisição <mark>smtp</mark> em um <mark>webhook</mark> para poder ser usado no n8n "burlando" a norma de envio de email que é rigorosa</p>
+                                        <img src="assets/images/modulo02_etapa05_aula06_01.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 07 - Configurando os <mark>Webhooks</mark> do N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>O <mark>n8n webhooks</mark> pode e deve ter mais de uma replica rodando, dependendo dos casos uma maquina só para o <mark>manager</mark> outra só para o <mark>webhook</mark> e outra só para o <mark>workers</mark>, isso vai depender das <mark>escalabilidade do projeto</mark></p>
+                                        <br>
+                                        <p>Para cada replica as configurações de espaço usado é para cada uma das réplicas, e não o total delas. ou seja se tiver <mark>1 cpu, 1024M e 2 réplicas</mark> então será <mark>2 cpus e 2048M</mark> pois é para cada réplica</p>
+                                        <img src="assets/images/modulo02_etapa05_aula07_01.png" alt="">
+                                        <p>A única configuração no <mark>label</mark> que precisará ser feita é no <mark>traefik.http.routers.n8n.webhooks.rule</mark>colocando o endereço do <mark>webhooks</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula07_02.png" alt="">
+                                        <p><mark>Todas as configuraçãos de environment devem ser copiadas do n8n-editor</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 08 - Configurando o <mark>Worker</mark> do N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>O <mark>worker</mark> é o responsável por executar os fluxos de trabalho, ele não tem acesso ao banco de dados, e não tem acesso ao editor, ele só executa os fluxos de trabalho</p>
+                                        <br>
+                                        <p>A <mark>concurrency</mark> é um valor para rodar processos em paralelo e ele também é por <mark>replica</mark>, se voce colocou <mark>10 de concorrencia</mark> e tem <mark>2 réplicas</mark>, então o total são <mark>20 processos paralelos</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula08_01.png" alt="">
+                                        <p>No caso do <mark>worker</mark> fazer <mark>replicas</mark> é só em ultimo caso, primeiro almenta a <mark>memória e cpu</mark> se não resolver almentar a <mark>concorrência</mark> e se mesmo assim não resolver ai sim almentar as <mark>réplicas</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 09 - Criando o Banco de Dados do N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>Antes de instalar o <mark>n8n</mark> precisa fazer a instalação do <mark>banco de dados</mark></p>
+                                        <br>
+                                        <p>No caso, tendo o <mark>Postgres</mark> já instalado, vá no portainer, acesse a aba <mark>container</mark> e acesse o serviço do <mark>Postgres</mark> depois, clique em <mark>console</mark>, para abrir o terminal digite em <mark>user</mark> postgres <small><i>( tudo minúsculo )</i></small> e depois em <mark>conectar</mark>, dessa forma não será nescessário informar o <mark>usuário e senha do postgres</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula09_01.png" alt="">
+                                        <p>Depois rode o comando bash</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Acessando o Postgres</h1><pre><code class="language-bash">
+psql
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>No <mark>n8n</mark> foi configurado um <mark>banco de dados</mark> e ele precisa ser criado antes da instalação</p>
+                                        <img src="assets/images/modulo02_etapa05_aula09_02.png" alt="">
+                                        <p>No caso o nome do banco de dados é <mark>n8n_queue</mark>, então use o comando <mark>CREATE DATABASE n8n_queue;</mark></p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Criando o banco de dados</h1><pre><code class="language-bash">
+CREATE DATABASE n8n_queue;
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p><mark>Cada banco de dados deve ter um nome diferente e não pode ter caracteres especiais</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 10 - Deploy do N8N no Swarm</summary>
+
+                                    <div class="class-notes">
+                                        <p>Comece pelo <mark>n8n editor</mark> copie o <mark>stack</mark> e cole no portainer, renomeie o container para o mesmo nome do serviço e então dê o deploy</p>
+                                        <br>
+                                        <p><mark>O editor precisa rodar as migrations antes de continuar o processo de instalação</mark></p>
+                                        <br>
+                                        <p>Para verificar se as <mark>migrations</mark> foram realizadas com sucesso, vá na aba <mark>services</mark> e espere o <mark>n8n editor</mark> termianr de baixar as imagens e está rodando, quando isso acontecer, vá na aba <mark>containers</mark> e selecione o <mark>n8n editor</mark> e abra os logs, e verifique se o <mark>processo de migrations</mark> foi finalizado. <mark>Somente quando ele estiver finalizado e pronto pra usar que deve continuar a instalação do n8n</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula10_01.png" alt="">
+                                        <p><mark>Isso também vale para atualização</mark></p>
+                                        <br>
+                                        <p>Agora siga copiando o <mark>stack do webhook</mark> e perceba que como a <mark>imagem do n8n</mark> já havia sido baixada a instalação do <mark>webhook</mark> será muito mais rápida</p>
+                                        <br>
+                                        <p>Siga então para a isntalação do <mark>worker</mark> copiando e colando o <mark>stack</mark> no portainer</p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 11 - Atualizando o N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p><mark>Primeiro atualziar o editor, depois o webhooks e depois o worker</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 12 - Verificando a Instalação do N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>No primiro login no <mark>n8n</mark> na página do navegador, ele pede para cadastrar o admin, coloques os dados e pode se quizer usar o próprio <mark>n8n</mark> para gerar a sua senha, só não pode perder ela.</p>
+                                        <img src="assets/images/modulo02_etapa05_aula12_01.png" alt="">
+                                        <p>Você tem vários sistemas para não perder a senha como o <mark>evernotion, notion, obsidian, lestpass, one password, bitwarden</mark> e vários outros</p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 14 - Configurando o Stack do Servidor MCP do N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p><mark>Aula 13 e 14 sobre n8n serviço MCP não pretendo fazer agora</mark></p>
+                                        <br>
+                                        <p>No <mark>traefik</mark> a prioridade de regas vem primeiro as regras maiores e depois as menores por exemplo a regra "
+                                        - traefik.http.routers.n8n_mcp_api.rule=Host(`webhooks.agenciasynca.com.br`) && PathPrefix(`/mcp`)" do <mark>n8n mcp</mark> vem primeiro d oque a regra 
+                                        - traefik.http.routers.n8n_webhook.rule=Host(`webhooks.agenciasynca.com.br`) do <mark>n8n webhooks</mark></p>
+                                        <img src="assets/images/modulo02_etapa05_aula14_01.png" alt="">
+                                        <img src="assets/images/modulo02_etapa05_aula14_02.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Setup <mark>Evolution API 2</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Variáveis de Ambiente Gerais</summary>
+
+                                    <div class="class-notes">
+                                        <p>Primeira configuração é o endereço http da evolution, <mark>evite usar evolution ou whatsapp ou qulaquer nome fácil de reastrear</mark></p>
+                                        <img src="assets/images/modulo02_etapa06_aula03_01.png" alt="">
+                                        <p>Antes de seguir com as <mark>variáveis de ambiente</mark> já lança o endereço no <mark>Cloud Flare</mark></p>
+                                        <img src="assets/images/modulo02_etapa06_aula03_02.png" alt="">
+                                        <p>O <mark>whatsapp</mark> pode mudar de versão e para atualziar isso vá no link kkkkk e mude a variável de ambiente</p>
+                                        <img src="assets/images/modulo02_etapa06_aula03_03.png" alt="">
+                                        <img src="assets/images/modulo02_etapa06_aula03_04.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Autenticação da Evolution API</summary>
+
+                                    <div class="class-notes">
+                                        <p>A <mark>Evolution API 2</mark> possui uma <mark>chave pública</mark>, crie uma chave forte usando o <a href="https://www.avast.com/random-password-generator#pc">Avast password generator</a> com pelo menos 20 ou 30 caracteres, o professor recomenda não usar caracteres especiais, ou você pode usar um <a href="https://www.uuidgenerator.net/">uuid</a> para gerar a senha</p>
+                                        <img src="assets/images/modulo02_etapa06_aula04_01.png" alt="">
+                                        <p><small><i>( No geral se for para enviar o link para o cliente use o <mark>avast</mark> e se não use o <mark>uuid</mark> )</i></small></p>
+                                        <br>
+                                        <p>A variável <mark>- AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES=true</mark> se for para somente 1 cliente pode habilitar mostrar a senha, caso contrário, se for uma <mark>Evolution SaaS</mark> para muitos usuários acessarem a api não, habilitar de geito nenhum, pois cada cliente poderar ver a senha dos outros clientes</p>
+                                        <img src="assets/images/modulo02_etapa06_aula04_02.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Configurações do <mark>Banco de Dados</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Vamos ter um <mark>postgres e um redis</mark> para o <mark>n8n</mark> e outro <mark>postgres e redis</mark> para a <mark>restante das ferramentas</mark></p>
+                                        <br>
+                                        <p>Primeiro pegue o <mark>login e senha</mark> so seu banco de dados e copie no no código da stack da <mark>Evolution</mark></p>
+                                        <img src="assets/images/modulo02_etapa06_aula05_01.png" alt="">
+                                        <p>O <mark>usuário</mark> do postgres é o nome do serviço</p>
+                                        <img src="assets/images/modulo02_etapa06_aula05_02.png" alt="">
+                                        <p>A <mark>SENHA</mark> você substitue pela <mark>sua senha</mark> e o <mark>usuário</mark> fica depois da <mark>senha@</mark> </p>
+                                        <img src="assets/images/modulo02_etapa06_aula05_03.png" alt="">
+                                        <p>A ultima informação nessa linha de código é qual o <mark>banco de dados</mark> dentro do <mark>postegres</mark></p>
+                                        <img src="assets/images/modulo02_etapa06_aula05_04.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
                         </ul>
                     </details>
                 </details>

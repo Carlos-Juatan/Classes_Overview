@@ -1,0 +1,33 @@
+version: "3.7"
+# Definição dos Serviços do Stack
+services:
+  # Configura o Serviço Principal
+  smtp2http:
+    # define a imagem do serviço
+    image: luizeof/smtp2http:latest
+    # Define o hostname do container
+    hostname: "{{.Service.Name}}.{{.Task.Slot}}"
+    # define o entrypoint
+    entrypoint: smtp2http --user=USER --pass=SENHA --webhook=https://api.workflows.promovaweb.com/webhook/a64b6746-f89f-4a95-8a22-abc0345c17b4
+    # define a rede do docker
+    networks:
+      - network_swarm_public
+    # define o modo de deploy do container
+    deploy:
+      # define o local de deploy
+      placement:
+        constraints:
+          - node.role == manager
+          # - node.hostname == worker1
+      resources:
+        # Define os limites de recursos do serviço
+        limits:
+          # Define o limite de CPU do serviço
+          cpus: "1"
+          # Define o limite de memória do serviço
+          memory: 1024M
+# Define a rede externa do Docker
+networks:
+  network_swarm_public:
+    external: true
+    name: network_swarm_public
