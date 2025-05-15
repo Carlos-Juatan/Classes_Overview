@@ -1337,6 +1337,89 @@ CREATE DATABASE n8n_queue;
                                     </div>
                                 </details>
                             </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 06 - Configurando <mark>Filas e Webhooks</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O <mark>webhook</mark> é em tempo real, ou seja se perder perdeu, mas o modo <mark>fila</mark> não é em tempo real e pode ser acessado a qualquer momento por isso <mark>é o modo mais indicado de usar</mark></p>
+                                        <img src="assets/images/modulo02_etapa06_aula06_01.png" alt="">
+                                        <br>
+                                        <p>É recomendado usar o <mark>rabbitMQ</mark> para formar as <mark>filas</mark> ao inves de usar o <mark>webhook</mark>, principalmente se for usar o <mark>n8n</mark></p>
+                                        <img src="assets/images/modulo02_etapa06_aula06_02.png" alt="">
+                                        <p>A parte <mark><small><i>- RABBITMQ_URI=amqp://usuario:senha@rabbitmq:5672/default</i></small></mark> é seguida por usuário, senha, o nome do serviço no docker, a porta, e o virtual host ( default )</p>
+                                        <br>
+                                        <p>Tanto para o nome do <mark>banco de dados</mark> como para o nome da <mark>exchange do rabbitMQ</mark> o ideal é usar o mesmo nome do <mark>seviço da evolution</mark> só para deixar padronizado, principalmente se usar mais de uma evolution</p>
+                                        <img src="assets/images/modulo02_etapa06_aula06_03.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 09 - Configurações de <mark>Cache</mark> da Evolution API</summary>
+
+                                    <div class="class-notes">
+                                        <p>Para configurar o <mark>redis</mark> na linha <mark><small><i>- CACHE_REDIS_URI=redis://redis:6379/1</i></small>, a estrutura é <mark>redis://nome do serviço no docker : a porta / banco de dados</mark></mark></p>
+                                        <img src="assets/images/modulo02_etapa06_aula09_01.png" alt="">
+                                        <p><mark>Se você tiver mais de uma instalação do evolution cada uma vai ficar em um banco de dados diferente, uma no 1, outra no 2 e assim por diante</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 12 - Sobre o <mark>Deploy</mark> da Evolution</summary>
+
+                                    <div class="class-notes">
+                                        <p>O endereço do <mark>label</mark> no código <mark><small><i>- traefik.http.routers.evolution_v2.rule=Host(`evo.agenciasynca.com.br`)</i></small></mark> o endereço deve ser trocado pelo mesmo endereço do código <mark><small><i> - SERVER_URL=https://evo.agenciasynca.com.br</i></small></mark></p>
+                                        <img src="assets/images/modulo02_etapa06_aula12_01.png" alt="">
+                                        <img src="assets/images/modulo02_etapa06_aula12_02.png" alt="">
+                                        <img src="assets/images/modulo02_etapa06_aula12_03.png" alt="">
+                                        <p>E lembrando que nesses <mark>labels</mark> a parte <mark>evolution_v2</mark> é o nome do serviço, e se esse nome do serviço for trocado também precisa trocar nos <mark>labels</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                </details>
+                
+                <details>
+                    <summary class="module-title">MÓDULO EXTRA - BASEROW</mark></summary>
+
+                    <details>
+                        <summary class="module-subtitle">Instalação e Configuração do <mark>Baserow</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Instalando o Stack do <mark>Baserow</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O primeiro passo é configurar o <mark>CNAME no Cloud Flare</mark></p>
+                                        <img src="assets/images/moduloExtraBaserow_etapa01_aula04_01.png" alt="">
+                                        <p>Segundo passo é criar o <mark>Banco de Dados</mark> já que o <mark>Baserow</mark> não cria.</p>
+                                        <br>
+                                        <p>Abra o <mark>terminal</mark> do <mark>postegres</mark> no <mark>portainer</mark> e digite o código</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Criando o banco de dados</h1><pre><code class="language-bash">
+psql -U postgres
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois o código</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Criando o banco de dados</h1><pre><code class="language-bash">
+CREATE DATABASE baserow;
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>O nome do banco de dados é o mesmo nome do serviço</p>
+                                        <img src="assets/images/moduloExtraBaserow_etapa01_aula04_02.png" alt="">
+                                        <p>Agora cópie e cole o stack do <mark>Baserow</mark> no <mark>Portainer</mark> chame o stack do mesmo nome do serviço desmarque a opção <mark>Acess Control</mark> e faça o <mark>deploy</mark></p>
+                                    </div>
+                                </details>
+                            </li>
                         </ul>
                     </details>
                 </details>
