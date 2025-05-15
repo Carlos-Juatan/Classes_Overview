@@ -276,7 +276,7 @@
                                         <img src="assets/images/modulo01_etapa03_aula04_01.png" alt="">
                                         <p>Crie mais 2 regras uma para o <mark>HTTP e HTTPS</mark> usando as portas <mark>80 e 443</mark> e deixe aberto para todos colocando os <mark>IPV4 e IPV6</mark> </p>
                                         <img src="assets/images/modulo01_etapa03_aula04_02.png" alt="">
-                                        <div class="firewall-rules">
+                                        <div class="left-text-aling">
                                             <h3>Portas obrigatórias para configurar o Firewall</h3>
                                             <br><p> Porta TCP 22: Porta que permite acessar SSH
                                             <br> Porta TCP 80: Porta Http
@@ -1383,7 +1383,7 @@ CREATE DATABASE n8n_queue;
                 </details>
                 
                 <details>
-                    <summary class="module-title">MÓDULO EXTRA - BASEROW</mark></summary>
+                    <summary class="module-title">MÓDULO EXTRA - <mark>BASEROW</mark></summary>
 
                     <details>
                         <summary class="module-subtitle">Instalação e Configuração do <mark>Baserow</mark></summary>
@@ -1417,6 +1417,62 @@ CREATE DATABASE baserow;
                                         <p>O nome do banco de dados é o mesmo nome do serviço</p>
                                         <img src="assets/images/moduloExtraBaserow_etapa01_aula04_02.png" alt="">
                                         <p>Agora cópie e cole o stack do <mark>Baserow</mark> no <mark>Portainer</mark> chame o stack do mesmo nome do serviço desmarque a opção <mark>Acess Control</mark> e faça o <mark>deploy</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                </details>
+                <details>
+                    <summary class="module-title">MÓDULO EXTRA - INSTALAÇÃO <mark>LOCALHOST</mark></summary>
+
+                    <details>
+                        <summary class="module-subtitle">Instalação e Configuração do <mark>Localhost</mark></summary>
+                
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Passo 01 - Instalando o <mark>Docker</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Você precisará ter o Docker Desktop (Windows/macOS) ou o Docker Engine e Docker Compose (Linux) instalados na sua máquina. Esta é a base para rodar todos os serviços em contêineres.</p>
+                                        <br>
+                                        <p>Instale de acordo com seu sistema operacional: <a href="https://docs.docker.com/get-docker/">docs docker</a></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Passo 02 - Escolha um <mark>Domínio Falso</mark> Local:</summary>
+
+                                    <div class="class-notes">
+                                        <p>Como você não terá um domínio público, você usará um domínio que só existe na sua máquina local. Algo como <mark>codesefaz.local</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Passo 03 - Configurar a Resolução de Nomes Local <mark>(/etc/hosts)</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Para que seu computador saiba que <mark>codesefaz.local</mark> e seus subdomínios (como <mark class="blue-mark">painel.codesefaz.local</mark> <small><i>( para o <mark>portainer</mark> )</i></small>, ou <mark class="blue-mark">workflows.codesefaz.local</mark> <small><i>( para o editor do <mark>n8n</mark> )</i></small> ) apontam para o seu próprio computador (localhost), você precisa editar o arquivo de hosts do seu sistema operacional.</p>
+                                        <br>
+                                        <p>No Windows: Edite o arquivo <mark>C:\Windows\System32\drivers\etc\hosts</mark> <small><i>( precisa de permissões de administrador )</i></small>.</p>
+                                        <img src="assets/images/moduloLocalhost_passo03_01.png" alt="">
+                                        <p>Adicione as seguintes linhas (ou similar, adaptando para seus subdomínios):
+                                            <div class="left-text-aling">
+                                                <br><h3>Arquivo <mark>hosts </mark> aberto no bloco de notas</h3>
+                                                <br>127.0.0.1 codesefaz.local <small><i>( para o servidor central )</i></small>
+                                                <br>127.0.0.1 painel.codesefaz.local <small><i>( para o portainer )</i></small>
+                                                <br>127.0.0.1 workflows.codesefaz.local <small><i>( para o n8n editor )</i></small>
+                                                <br>127.0.0.1 webhooks.codesefaz.local <small><i>( para o n8n webhook )</i></small>
+                                                <br>127.0.0.1 baserow.codesefaz.local <small><i>( para o baserow talvez melhor trocar o nome )</i></small>
+                                                <br>127.0.0.1 evo.codesefaz.local <small><i>( para a evolution api )</i></small>
+                                            </div>
+                                        </p>
+                                        <img src="assets/images/moduloLocalhost_passo03_02.png" alt="">
+                                        <p><mark>No windows para conseguir salvar o arquivo depois de modificar você precisar abrir primeiro o bloco de notas em modo administrador e depois atravez do bloco de notas abrir a pasta e o arquivo, só assim será possível fazer as mudanças pois é um sistema de segurança do windows</mark></p>
+
                                     </div>
                                 </details>
                             </li>
