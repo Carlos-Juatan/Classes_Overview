@@ -640,7 +640,7 @@ sudo systemctl enable containerd.service
                             </li>
                             <li>
                                 <details>
-                                    <summary class="class-title">Aula 05 - Ativação do Modo Swarm no Docker</summary>
+                                    <summary class="class-title">Aula 05 - Ativação do <mark>Modo Swarm</mark> no Docker</summary>
 
                                     <div class="class-notes">
                                         <p>Ainda no manager do seu <mark>SSH</mark> copie e cole o código para iniciar o modo <mark>Swarm</mark> do Docker</p>
@@ -667,7 +667,7 @@ docker swarm init --advertise-addr=45.185.229.160
                                         <br>
                                         <div class="bash-code-notes">
                                             <div class="bash-code-notes-border"><h1>bash - Rede do Swarm</h1><pre><code class="language-bash">
-                                                docker network create --driver=overlay network_swarm_public
+docker network create --driver=overlay network_swarm_public
                                             </code></pre></div>
                                         </div>
                                     </div>
@@ -1443,18 +1443,34 @@ CREATE DATABASE baserow;
                             </li>
                             <li>
                                 <details>
-                                    <summary class="class-title">Passo 02 - Escolha um <mark>Domínio Falso</mark> Local:</summary>
+                                    <summary class="class-title">Passo 02 - Ativação do <mark>Modo Swarm</mark> no Docker</summary>
 
                                     <div class="class-notes">
-                                        <p>Como você não terá um domínio público, você usará um domínio que só existe na sua máquina local. Algo como <mark>codesefaz.local</mark></p>
+                                        <p>Agora que o <mark>docker</mark> está instalado na sua máquina, para ativar o <mark>modo swarm</mark> abra o terminal e digite o código</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Inicia o Swarm</h1><pre><code class="language-bash">
+docker swarm init
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Agora para adicionar uma <mark>rede</mark> para o <mark>Swarm</mark></p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Rede do Swarm</h1><pre><code class="language-bash">
+docker network create --driver=overlay network_swarm_public
+                                            </code></pre></div>
+                                        </div>
                                     </div>
                                 </details>
                             </li>
                             <li>
                                 <details>
-                                    <summary class="class-title">Passo 03 - Configurar a Resolução de Nomes Local <mark>(/etc/hosts)</mark></summary>
+                                    <summary class="class-title">Passo 03 - Configurar um <mark>Domínio Falso</mark> Local:<mark>(/etc/hosts)</mark></summary>
 
                                     <div class="class-notes">
+                                        <p>Como você não terá um domínio público, você usará um domínio que só existe na sua máquina local. Algo como <mark>codesefaz.local</mark></p>
+                                        <br>
                                         <p>Para que seu computador saiba que <mark>codesefaz.local</mark> e seus subdomínios (como <mark class="blue-mark">painel.codesefaz.local</mark> <small><i>( para o <mark>portainer</mark> )</i></small>, ou <mark class="blue-mark">workflows.codesefaz.local</mark> <small><i>( para o editor do <mark>n8n</mark> )</i></small> ) apontam para o seu próprio computador (localhost), você precisa editar o arquivo de hosts do seu sistema operacional.</p>
                                         <br>
                                         <p>No Windows: Edite o arquivo <mark>C:\Windows\System32\drivers\etc\hosts</mark> <small><i>( precisa de permissões de administrador )</i></small>.</p>
@@ -1466,13 +1482,117 @@ CREATE DATABASE baserow;
                                                 <br>127.0.0.1 painel.codesefaz.local <small><i>( para o portainer )</i></small>
                                                 <br>127.0.0.1 workflows.codesefaz.local <small><i>( para o n8n editor )</i></small>
                                                 <br>127.0.0.1 webhooks.codesefaz.local <small><i>( para o n8n webhook )</i></small>
-                                                <br>127.0.0.1 baserow.codesefaz.local <small><i>( para o baserow talvez melhor trocar o nome )</i></small>
+                                                <br>127.0.0.1 brow.codesefaz.local <small><i>( para o baserow talvez melhor trocar o nome )</i></small>
                                                 <br>127.0.0.1 evo.codesefaz.local <small><i>( para a evolution api )</i></small>
                                             </div>
                                         </p>
                                         <img src="assets/images/moduloLocalhost_passo03_02.png" alt="">
                                         <p><mark>No windows para conseguir salvar o arquivo depois de modificar você precisar abrir primeiro o bloco de notas em modo administrador e depois atravez do bloco de notas abrir a pasta e o arquivo, só assim será possível fazer as mudanças pois é um sistema de segurança do windows</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Passo 04 - configurar o certificado usando o <mark>mkcert</mark></summary>
 
+                                    <div class="class-notes">
+                                        <p>Você tem 3 opções para fazer essa instalação, usando o <mark>Chocolatey ou Scoop</mark> são as mais fáceis ou da <mark>forma manual</mark> mesmo que dá um pouco de trabalho</p>
+                                        <br>
+                                        <p><mark>Antes de realizar a instalação precisa já ter o docker instalado e os domínios configurados</mark></p>
+                                        <br>
+                                        <p>Método 3: Instalação Manual</p>
+                                        <br>
+                                        <p>Você pode baixar o executável <mark>mkcert.exe</mark> diretamente da página de releases do GitHub ( <a href="https://github.com/FiloSottile/mkcert/releases">mkcert/releases</a> ), mas você precisará colocá-lo em um diretório que esteja no seu PATH do sistema para poder executá-lo de qualquer lugar. </p>
+                                        <br>
+                                        <p>Role para baixo até a seção "Assets" da versão mais recente. Procure por um arquivo com um nome como <mark class="blue-mark">mkcert-vX.Y.Z-windows-amd64.exe</mark></p>
+                                        <br>
+                                        <p><mark>Renomeie este arquivo</mark> simplesmente para <mark class="blue-mark">mkcert.exe</mark></p>
+                                        <br>
+                                        <div class="left-text-aling">
+                                            <h3>Abra o Explorador de Arquivos.</h3>
+                                            <br>Navegue até um local de sua preferência (por exemplo, na raiz do seu drive C: ou dentro da sua pasta de usuário).
+                                            <br>Crie uma nova pasta. Por exemplo, crie a pasta <mark>C:\tools.</mark>
+                                            <br>Coloque o arquivo <mark class="blue-mark">mkcert.exe</mark> dentro dessa pasta. <small><i>( ex: C:\tools\mkcert.exe ).</i></small>
+                                        </div>
+                                        <br>
+                                        <div class="left-text-aling">
+                                            <h3>Adicionar o Diretório ao <mark>Variável de Ambiente Path</mark></h3>
+                                            <br>Clique no botão Iniciar do Windows.
+                                            <br>Digite "variáveis de ambiente" na barra de pesquisa.
+                                            <br>Clique em <mark>Editar as variáveis de ambiente do sistema</mark> (ou <mark>Editar variáveis de ambiente para sua conta</mark>, se você não tiver permissões de administrador ou preferir que o <mark>mkcert</mark> só funcione para o seu usuário. Editar para o sistema é geralmente mais útil). Uma janela chamada "Propriedades do Sistema" será aberta na aba "Avançado".
+                                            <br>Clique no botão <mark>Variáveis de Ambiente...</mark> na parte inferior da janela <mark class="blue-mark">Propriedades do Sistema</mark>.
+                                            <br>
+                                            <br>
+                                            <h3>Na janela <mark>Variáveis de Ambiente</mark>, você verá duas seções: <mark class="blue-mark">Variáveis de usuário</mark> e <mark class="blue-mark">Variáveis do sistema</mark></h3>
+                                            <br>Se você escolheu editar para o <mark class="blue-mark">sistema</mark>, procure pela variável chamada <mark>Path</mark> na seção <mark>Variáveis do sistema</mark>.
+                                            <br>Se você escolheu editar para sua <mark class="blue-mark">conta</mark>, procure pela variável chamada <mark>Path</mark> na seção <mark class="blue-mark">Variáveis de usuário</mark>. <small><i>( Recomendação: Editar a variável <mark>Path</mark> na seção <mark class="blue-mark">Variáveis de usuário</mark> é geralmente mais seguro e não requer permissões administrativas elevadas a todo momento, a menos que você queira que o mkcert esteja disponível para todos os usuários da máquina. )</i></small>
+                                            <br>Selecione a variável <mark>Path</mark> <small><i>( na seção de usuário ou sistema, conforme sua escolha )</i></small> e clique em <mark>Editar...</mark>.
+                                            <br>Uma nova janela <mark class="blue-mark">Editar variável de ambiente</mark> será aberta. Esta janela mostrará uma lista de diretórios (em versões modernas do Windows).
+                                            <br>Clique no botão <mark class="blue-mark">Novo</mark>.
+                                            <br>Digite o caminho completo para o diretório que você criou <small><i>( ex: C:\tools )</i></small>.
+                                            <br>Pressione Enter para confirmar a nova entrada.
+                                            <br>Clique em <mark class="blue-mark">OK</mark> em todas as janelas abertas <small><i>( <mark class="blue-mark">Editar variável de ambiente</mark>, <mark class="blue-mark">Variáveis de Ambiente</mark>, <mark class="blue-mark">Propriedades do Sistema</mark> )</i></small> para salvar as mudanças.
+                                            <br>
+                                            <br>
+                                            <h3>Verificar se Funciona</h3>
+                                            <br>As mudanças na variável <mark>Path</mark> geralmente só entram em vigor em novas janelas do Prompt de Comando ou PowerShell que são abertas após a modificação.
+                                            <br>Feche qualquer Terminal que esteja aberto.
+                                            <br>Abra um novo Terminal.
+                                            <br>Digite o comando <mark>mkcert --version</mark> e pressione Enter.
+                                            <br>Se tudo estiver correto, você verá a versão do <mark>mkcert</mark> instalada.
+                                        </div>
+                                        <br>
+                                        <p>Perfeito. Uma vez que o mkcert.exe está no seu Path e você consegue executá-lo de qualquer lugar, o próximo passo é instalar a Autoridade Certificadora (CA) local.</p>
+                                        <br>
+                                        <p>Este passo é essencial porque é ele que faz com que os certificados que o mkcert vai gerar depois sejam confiáveis no seu sistema operacional e, consequentemente, nos seus navegadores (como o LibreWolf) e outras aplicações que utilizam o armazenamento de certificados do Windows.</p>
+                                        <br>
+                                        <p>Abra o Terminal <small><i>( Recomendado como Administrador )</i></small></p>
+                                        <br>
+                                        <p>Execute o Comando de Instalação da CA: No terminal que você abriu como administrador, digite o seguinte comando e pressione Enter:</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Instalando a CA</h1><pre><code class="language-bash">
+mkcert -install
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Pode aparecer uma tela de segurança, Confirme o UAC clicando em <mark>sim</mark> (se aparecer)</p>
+                                        <br>
+                                        <p>As mensagens no Terminal deve ser como na imagem</p>
+                                        <img src="assets/images/moduloLocalhost_passo04_01.png" alt="">
+                                        <p>Com a CA local instalada e confiada, agora podemos gerar os certificados específicos para os domínios falsos no arquivo <mark class="blue-mark">hosts</mark></p>
+                                        <br>
+                                        <p>Abra um Prompt de Comando ou PowerShell NORMAL: Você não precisa de privilégios de administrador para gerar certificados. Abra um terminal comum.</p>
+                                        <br>
+                                        <p>Navegue até a Pasta Correta: Use o comando cd para ir até a pasta onde você pretende guardar os arquivos YAML do seu stack do <mark>traefik</mark> e onde você criará a pasta <mark>certs</mark> que será montada no Traefik. <small><i>( Exemplo: cd C:\Users\SeuUsuario\MeusProjetos\MeuStackN8N )</i></small></p>
+                                        <br>
+                                        <p>Dentro desse diretório crie a Pasta <mark class="blue-mark">certs</mark> e abra ela</p>
+                                        <br>
+                                        <p><mark>Execute o Comando mkcert com seus Domínios</mark> listando todos os domínios falsos que você quer que o certificado seja válido, incluindo o wildcard e IPs locais. Digite o comando cuidadosamente</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Gerando o certificado</h1><pre><code class="language-bash">
+mkcert codesefaz.local painel.codesefaz.local workflows.codesefaz.local webhooks.codesefaz.local brow.codesefaz.local evo.codesefaz.local "*.codesefaz.local" localhost 127.0.0.1 ::1
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Após usar o comando deverá ficar como na imagem a seguir</p>
+                                        <img src="assets/images/moduloLocalhost_passo04_02.png" alt="">
+                                        <p>Os arquivos <mark>.pem</mark> e <mark>.key</mark> será para montar no contêiner do Traefik e configurar o Traefik para usar, permitindo que seus serviços locais rodem com HTTPS confiável.</p>
+                                        <br>
+                                        <p><mark>Não será nescessário adicionar mais certificados caso adicione mais SSLs falsos pois o coringa .codesefaz.local será responsável pelos novos SSLs</mark></p>
+                                        <br>
+                                        <p>Agora que você já tem os certificados, o próximo passo é configurar o Traefik para usar esses certificados e criar um stack do Traefik.</p>
+                                        <br>
+                                        <p>Abra o local usando o <mark>terminal</mark> ou usando o <mark>vscode</mark> e digite o código</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Criando o stack do Traefik</h1><pre><code class="language-bash">
+docker stack deploy --prune --detach=false --resolve-image always -c traefik-v2.yaml traefik-v2
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Agora para verificar se o <mark>traefik</mark> está rodando, abra o navegador e digite o endereço <mark>http://painel.codesefaz.local:8080</mark></p>
                                     </div>
                                 </details>
                             </li>
