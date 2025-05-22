@@ -1427,7 +1427,74 @@ CREATE DATABASE baserow;
                     <summary class="module-title">MÓDULO EXTRA - INSTALAÇÃO <mark>LOCALHOST</mark></summary>
 
                     <details>
-                        <summary class="module-subtitle">Instalação e Configuração do <mark>Localhost</mark></summary>
+                        <summary class="module-subtitle">Instalação e Configuração do <mark>Localhost com docker compose</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Passo 01 - Instalando o <mark>Docker</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Você precisará ter o Docker Desktop (Windows/macOS) ou o Docker Engine e Docker Compose (Linux) instalados na sua máquina. Esta é a base para rodar todos os serviços em contêineres.</p>
+                                        <br>
+                                        <p>Instale de acordo com seu sistema operacional: <a href="https://docs.docker.com/get-docker/">docs docker</a></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Passo 02 - Instalando o <mark>banco de dados</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Abra a pasta que contem os stacks do docker-compose pelo terminal e use o comando</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Criando a network network_compose_public</h1><pre><code class="language-bash">
+docker network create --driver=overlay network_compose_public
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Instalação do postgres</h1><pre><code class="language-bash">
+docker-compose -f postgres.yaml up -d
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p>Depois de instalar o <mark>postegres</mark> crie o banco de dados, no terminal e digite</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Criando o banco de dados</h1><pre><code class="language-bash">
+docker exec -it <nome/ip do container> psql -U postgres
+CREATE DATABASE evolution;
+\q
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Passo 03 - Instalando os <mark>serviços</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Agora que o banco de dados está instalado podemos seguir instalando o restando dos serviços</p>
+                                        <br>
+                                        <div class="bash-code-notes">
+                                            <div class="bash-code-notes-border"><h1>bash - Instalação de todos os outros serviços</h1><pre><code class="language-bash">
+docker-compose -f postgres.yaml -f redis.yaml -f rabbitmq.yaml -f n8n.yaml -f evolution-api.yaml up -d
+                                            </code></pre></div>
+                                        </div>
+                                        <br>
+                                        <p><mark>A instalação precisa ser feita usando todos os nomes inclusive do postegres pois no stack do evolution ele foi marcado como</mark><mark class="blue-mark"> DependsOn </mark><mark>mesmo que o postegres ja esteja instalado</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Instalação e Configuração do <mark>Localhost com docker swarm</mark></summary>
                 
                         <ul>
                             <li>
@@ -1572,7 +1639,7 @@ mkcert -install
                                         <br>
                                         <div class="bash-code-notes">
                                             <div class="bash-code-notes-border"><h1>bash - Gerando o certificado</h1><pre><code class="language-bash">
-mkcert codesefaz.local painel.codesefaz.local workflows.codesefaz.local webhooks.codesefaz.local brow.codesefaz.local evo.codesefaz.local "*.codesefaz.local" localhost 127.0.0.1 ::1
+mkcert codesefaz.local dashboard.codesefaz.local painel.codesefaz.local workflows.codesefaz.local webhooks.codesefaz.local brow.codesefaz.local evo.codesefaz.local "*.codesefaz.local" localhost 127.0.0.1 ::1
                                             </code></pre></div>
                                         </div>
                                         <br>
@@ -1582,7 +1649,17 @@ mkcert codesefaz.local painel.codesefaz.local workflows.codesefaz.local webhooks
                                         <br>
                                         <p><mark>Não será nescessário adicionar mais certificados caso adicione mais SSLs falsos pois o coringa .codesefaz.local será responsável pelos novos SSLs</mark></p>
                                         <br>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Passo 05 - Configurando o <mark>Traefik</mark></summary>
+
+                                    <div class="class-notes">
                                         <p>Agora que você já tem os certificados, o próximo passo é configurar o Traefik para usar esses certificados e criar um stack do Traefik.</p>
+                                        <br>
+                                        <p>Abra a pasta que contém a <mark>stack do traefik</mark> que esta em <mark class="blue-mark">C:\Users\car_J Worker\Documents\_Projects\Web\_Notes\localhost\localhost_docker_services\stacks\traefik\testing</mark> <small><i>( referência de projeto localhost <a href="https://github.com/Heziode/traefik-v2-https-ssl-localhost">github - traefik-v2-https-ssl-localhost</a> e <a href="https://jukelyn.com/posts/traefik/">jukelyn.com - traefik</a> )</i></small></p>
                                         <br>
                                         <p>Abra o local usando o <mark>terminal</mark> ou usando o <mark>vscode</mark> e digite o código</p>
                                         <br>
@@ -1593,6 +1670,67 @@ docker stack deploy --prune --detach=false --resolve-image always -c traefik-v2.
                                         </div>
                                         <br>
                                         <p>Agora para verificar se o <mark>traefik</mark> está rodando, abra o navegador e digite o endereço <mark>http://painel.codesefaz.local:8080</mark></p>
+                                        <img src="assets/images/moduloLocalhost_passo05_01.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                </details>
+                <details>
+                    <summary class="module-title">MÓDULO EXTRA - SITES DE TRABALHO E ÚTEIS</summary>
+
+                    <details>
+                        <summary class="module-subtitle">Sites para Estudo</summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Links do <mark>Workana</mark></summary>
+
+                                    <div class="class-notes">
+                                        <P><a href="https://www.youtube.com/watch?v=s-NsyR7D05A">Masterclass - Como Criar Propostas Irresistíveis!🌟</a></P>
+                                        <br>
+                                        <p><a href="https://sso.teachable.com/secure/1555144/identity/login/otp">Site do curso do <mark>workana</mark></a></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Links do <mark>PromovaWeb</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>professor diz que a minha hora de trabalho é 30 a 40</p>
+                                        <br>
+                                        <p>n8n, evolution e baserow alem de postgress e redis, e brevo(smtp)</p>
+                                        <br>
+                                        <p><a href="https://comunidade.promovaweb.com/c/stacks-e-scripts/"></a></p>
+                                        <p><a href="">promovaweb - stacks-e-scripts</a></p>
+                                        <p><a href="https://promovaweb.com/courses">Plataforma do curso <mark>promovaweb</mark> que não é a comunidade</a></p>
+                                        <p><a href="https://promovaweb.com/primeiros-passos">Curso <mark>primeiros-passos da promovaweb</mark> que verei em breve</a></p>
+                                        <p><a href="https://comunidade.promovaweb.com/c/formacao-n8n-2025-nivel-1">Última aula que parei do curso</a></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Links de <mark>úteis</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p><a href="https://www.avast.com/random-password-generator#pc">avast - random-password-generator</a></p>
+                                        <p><a href="https://hub.docker.com/">docker hub</a></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Links dos <mark>Serviços Compose</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p><a href="http://localhost:4000/browser/">pgAdmin</a></p>
+                                        <p><a href="http://localhost:8080/manager/">Evolution API Manager</a></p>
+                                        <p><a href="http://localhost:15672/">RabbitMQ</a></p>
+                                        <p><a href="http://localhost:5678/home/workflows">n8n workflows</a></p>
                                     </div>
                                 </details>
                             </li>
@@ -1602,5 +1740,9 @@ docker stack deploy --prune --detach=false --resolve-image always -c traefik-v2.
             </div>
         </section>
     </main>
+
+    <footer>
+        
+    </footer>
 </body>
-</html>
+</html>        

@@ -130,3 +130,8 @@ code {
 .blue-mark {
     color: blue;
 }
+
+footer {
+    height: 200px;
+    width: 100%;
+}
