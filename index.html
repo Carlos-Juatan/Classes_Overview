@@ -1381,6 +1381,202 @@ CREATE DATABASE n8n_queue;
                         </ul>
                     </details>
                 </details>
+                <details>
+                    <summary class="module-title">MÓDULO 03 - FORMAÇÃO <mark>N8N 2025</mark> - NÍVEL 01</summary>
+
+                    <details>
+                        <summary class="module-subtitle">Visão Geral do <mark>N8N</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - N8N SaaS vs Self-Hosted</summary>
+
+                                    <div class="class-notes">
+                                        <p>O <mark>n8n</mark> tem um servidor online que paga mensalmente para usar <small><i>( SaaS )</i></small> mas se você for cobrar a intalação e manutenção do servidor você tem que cobrar mais caro.</p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Sobre a Licença do N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>Você pode cobrar a instalação do <mark>n8n</mark> desde que o cliente pague por esse servidor</p>
+                                        <br>
+                                        <p>O modo errado e que <mark>pode dar problema</mark> é o modelo <mark>SaaS</mark> que seria eu instalar o <mark>n8n na minha conta da Hatzner</mark> e dá o cliente acesso a essa conta</p>
+                                        <br>
+                                        <p>Não pode fazer isso que vai dá problema com a n8n</p>
+                                        <br>
+                                        <p>O que pode ser feito é que o cliente vai criar uma conta ele mesmo na <mark class="blue-mark">Hatzner, Digital Ocean, etc...</mark> então, ele te passar o login e senah e você fazer a instalação</p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Configurações Gerais do <mark>N8N</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O <mark>n8n</mark> tem um sistema de multiusuários, que na versão gratuita não é colaborativo, ou seja, não tem integração entre esses usuários, todos são isolados e um não tem acesso aos dados dos outros, <mark class="blue-mark">o que é mutio bom</mark></p>
+                                        <br>
+                                        <p>Caso o cliente queira um serviço colaborativo entre os usuários vai ter que usar a versão paga do n8n</p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Configurações Gerais do <mark>Workflow</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>A primeira coisa que você vai fazer ao criar um <mark>Workflow</mark> e configurar como ele vai funcionar clicando nos tres pontinhos na parte superior dirreita da tala</p>
+                                        <img src="assets/images/modulo03_etapa01_aula05_01.png" alt="">
+                                        <p>As configurações importantes são</p>
+                                        <div class="left-text-aling">
+                                            <br><br><mark class="blue-mark">Execution Order:</mark> Sempre deixar na versão 1
+                                            <br><br><mark class="blue-mark">Timezone:</mark> Sempre por o horario do seu local
+                                            <br><br><mark class="blue-mark">Save failed production executions:</mark> Sempre salve as execulções de erro elas são as mais valiozas
+                                            <br><br><mark class="blue-mark">Save successful production executions:</mark> Pode colocar no começo para testar se está tudo funcionando mais depois desliga porque isso vai consumir muito espaço do disco
+                                            <br><br><mark class="blue-mark">Save manual executions:</mark> Testes manuais para testar o n8n tem que salver
+                                            <br><br><mark class="blue-mark">Save execution progress:</mark> O node wait é muito comum de usar, é um sistema que roda e para o tempo todo, e se for usar o node wait tem que deixar em salvar se não não funciona
+                                            <br><br><mark class="blue-mark">Timeout Workflow:</mark> Se o seu Workflow não estiver finalizando a execução, algo deu errado, essa função vai matar um workflow depois de um tempo determinado
+                                            <br><br><mark class="blue-mark">Timeout After:</mark> É o padrão do n8n para se caso um workflow não finalizar em 1 hora, ele vai matar o processo pra não travar
+                                        </div>
+                                        <img src="assets/images/modulo03_etapa01_aula05_02.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 06 - Conhecendo o <mark>Editor do N8N</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Você tem um node que sempre pode usar pra começar os testes manuais do workflow</p>
+                                        <img src="assets/images/modulo03_etapa01_aula06_01.png" alt="">
+                                        <p>Depois do primeiro <mark>node</mark> clicando no <mark class="blue-mark">+</mark> do node você vai ter mais opções de nodes que são compativeis com o node anterior</p>
+                                        <br>
+                                        <p>Os nodes não tem todas as integrações das apis para deixar mais leve, menos bugado e mais simples mas caso você queira fazer alguma integração que não tem no n8n voce pode fazer usando o <mark>node http</mark></p>
+                                        <br>
+                                        <p>Um node que você nunca vai usar em produção mais pode ser usado para testar é o <mark>Custumer Datastore</mark></p>
+                                        <img src="assets/images/modulo03_etapa01_aula06_02.png" alt="">
+                                        <p>Quando o node se divide pra cima e pra baixo ele roda primeiro o de cima e depois o de baixo</p>
+                                        <img src="assets/images/modulo03_etapa01_aula06_03.png" alt="">
+                                        <p>Se o workflow encontrar algum erro ele para. <mark>Ou seja se ele encontrar erro no node de cima ele não vai rodar o de baixo</mark></p>
+                                        <br>
+                                        <p>Você tem a opção de deixar o workflow funcioando mesmo com o erro no node, selecione o node e clique em configurar o node</p>
+                                        <img src="assets/images/modulo03_etapa01_aula06_04.png" alt="">
+                                        <p><mark>Mas não é recomendado que faça isso</mark></p>
+                                        <br>
+                                        <p>O painel do workflow a partir da <mark>versão 1.70</mark> tem a capacidade de até <mark class="blue-mark">3.000 nodes</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 07 - Triggers, Pooling e Webhooks</summary>
+
+                                    <div class="class-notes">
+                                        <p>Quando você cria um novo workflow a primeira janela vai mostrar somente os <mark>Triggers</mark></p>
+                                        <img src="assets/images/modulo03_etapa01_aula07_01.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 09 - Como Funcionam as <mark>Credenciais</mark> do N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>alguns serviços como <mark>a evolution, o mautic, entre outros</mark> precisam das autenticações que o n8n chama de <mark>Credenciais</mark></p>
+                                        <img src="assets/images/modulo03_etapa01_aula08_01.png" alt="">
+                                        <p>Ou seja, quando você pedir para o cliente para criar uma credencial no serviço você também precisar pedir para o cliente adicionar as <mark>autorizações</mark> que esse serviço vai precisar</p>
+                                        <br>
+                                        <p>Uma das coisas mais importantes da credencial é o nome, nomeie para a função da credencial que você colocou <small><i>( mautic / promovaweb / luis )</i></small></p>
+                                        <img src="assets/images/modulo03_etapa01_aula08_02.png" alt="">
+                                        <p>Cada credencial vai ser feita de forma diferente, <mark>Importante saber que essa credencial vai ficar criptografada no banco de dados</mark></p>
+                                        <br>
+                                        <p>Ou seja, <mark>Salve com você a senha e informação da credencial pois o n8n não vai mostrar mais essas informações depois de ter adicioando</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 10 - Documentação com Sticky Notes</summary>
+
+                                    <div class="class-notes">
+                                        <p>Faça a Documentação das coisas que você está fazendo</p>
+                                        <br>
+                                        <p>O primeiro é o nome do workflow com <mark>açaõ e objeto</mark> <small><i>( lista Contatos do Custumer Data Store )</i></small></p>
+                                        <div class="left-text-aling">
+                                            <br><mark class="blue-mark">lista Contatos:</mark> Ação
+                                            <br><mark class="blue-mark">Custumer Data Store:</mark> Objeto
+                                        </div>
+                                        <p>Também pode usar <mark>-></mark> para renomear o workflow <small><i>( lista Contatos -> Custumer Data Store -> Banco de dados )</i></small></p>
+                                        <div class="left-text-aling">
+                                            <br><mark class="blue-mark">lista Contatos:</mark> Input
+                                            <br><mark class="blue-mark">Custumer Data Store:</mark> Processamento
+                                            <br><mark class="blue-mark">Banco de dados:</mark> Output
+                                        </div>
+                                        <p>Segundo é renomear os node, ao clicar no node e apretar <mark>barra de espaço</mark> você abre uma tela para renoemrar o node <small><i>( deiponível a partir da versão 1.83 )</i></small></p>
+                                        <img src="assets/images/modulo03_etapa01_aula09_01.png" alt="">
+                                        <p>Renomeie os nodes sempre com o que eles retornam</p>
+                                        <img src="assets/images/modulo03_etapa01_aula09_02.png" alt="">
+                                        <p>Terceiro é as notas de cada node, você pode adicionar anotações aos nodes com informações específicas</p>
+                                        <img src="assets/images/modulo03_etapa01_aula09_03.png" alt="">
+                                        <p>Quarta é o Sticky Notes que é um tipo de agrupamento de notes com comentários, links, fotos etc. <small><i>( funciona como o read-me do github, e ele não agrua mesmo é só visual )</i></small></p>
+                                        <img src="assets/images/modulo03_etapa01_aula09_04.png" alt="">
+                                        <p><mark>Dica que para ficar mais fácil de acompanhar o fluxo faça os grupos de cima para baixo</mark></p>
+                                        <img src="assets/images/modulo03_etapa01_aula09_05.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Normalização de Dados com <mark>N8N</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula xx - Trabalhando com o json</summary>
+
+                                    <div class="class-notes">
+                                        <p>Para somar números</mark></p>
+                                        <img src="assets/images/modulo02_etapa02_aulaxx_01.png" alt="">
+                                        <p>Para normalizar texto o <mark class="blue-mark">.toSnakeCase()</mark> transforma o texto em <mark class="blue-mark">low case</mark> e substitue espaço por underline ( _ ) e o <mark class="blue-mark">.trim()</mark> remove espaço em banco no começo e no final da frase</p>
+                                        <img src="assets/images/modulo02_etapa02_aulaxx_02.png" alt="">
+                                        <p>O <mark class="blue-mark">.extractUrl()</mark> procura um <mark>Url</mark> dentro de um texto</p>
+                                        <img src="assets/images/modulo02_etapa02_aulaxx_03.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle"><mark>O Loop do N8N</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Visão Geral do Loop Over Items </summary>
+
+                                    <div class="class-notes">
+                                        <p>O ideal do n8n é o <mark>modo fila</mark> mas sem ser o modo fila tem o loop de itens que é feito da seguinte forma</p>
+                                        <img src="assets/images/modulo02_etapa03_aula04_01.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Loop Over Items com Wait</summary>
+
+                                    <div class="class-notes">
+                                        <p>O <mark>node wait</mark> fora do seu <mark>node Loop Over Items</mark> vai parar o Processamento do seu workflow para que o outros workes possam trabalhar, mas o <mark>node wait dentro do seu node Loop Over Items</mark> não vai parar o seu workflow e vai ficar consumindo memória</p>
+                                        <img src="assets/images/modulo02_etapa03_aula05_01.png" alt="">
+                                    </div>
+                                </details>
+                        </ul>
+                    </details>
+                </details>
+                
                 
                 <details>
                     <summary class="module-title">MÓDULO EXTRA - <mark>BASEROW</mark></summary>
@@ -1542,17 +1738,16 @@ docker network create --driver=overlay network_swarm_public
                                         <br>
                                         <p>No Windows: Edite o arquivo <mark>C:\Windows\System32\drivers\etc\hosts</mark> <small><i>( precisa de permissões de administrador )</i></small>.</p>
                                         <img src="assets/images/moduloLocalhost_passo03_01.png" alt="">
-                                        <p>Adicione as seguintes linhas (ou similar, adaptando para seus subdomínios):
-                                            <div class="left-text-aling">
-                                                <br><h3>Arquivo <mark>hosts </mark> aberto no bloco de notas</h3>
-                                                <br>127.0.0.1 codesefaz.local <small><i>( para o servidor central )</i></small>
-                                                <br>127.0.0.1 painel.codesefaz.local <small><i>( para o portainer )</i></small>
-                                                <br>127.0.0.1 workflows.codesefaz.local <small><i>( para o n8n editor )</i></small>
-                                                <br>127.0.0.1 webhooks.codesefaz.local <small><i>( para o n8n webhook )</i></small>
-                                                <br>127.0.0.1 brow.codesefaz.local <small><i>( para o baserow talvez melhor trocar o nome )</i></small>
-                                                <br>127.0.0.1 evo.codesefaz.local <small><i>( para a evolution api )</i></small>
-                                            </div>
-                                        </p>
+                                        <p>Adicione as seguintes linhas (ou similar, adaptando para seus subdomínios): </p>
+                                        <div class="left-text-aling">
+                                            <br><h3>Arquivo <mark>hosts </mark> aberto no bloco de notas</h3>
+                                            <br>127.0.0.1 codesefaz.local <small><i>( para o servidor central )</i></small>
+                                            <br>127.0.0.1 painel.codesefaz.local <small><i>( para o portainer )</i></small>
+                                            <br>127.0.0.1 workflows.codesefaz.local <small><i>( para o n8n editor )</i></small>
+                                            <br>127.0.0.1 webhooks.codesefaz.local <small><i>( para o n8n webhook )</i></small>
+                                            <br>127.0.0.1 brow.codesefaz.local <small><i>( para o baserow talvez melhor trocar o nome )</i></small>
+                                            <br>127.0.0.1 evo.codesefaz.local <small><i>( para a evolution api )</i></small>
+                                        </div>
                                         <img src="assets/images/moduloLocalhost_passo03_02.png" alt="">
                                         <p><mark>No windows para conseguir salvar o arquivo depois de modificar você precisar abrir primeiro o bloco de notas em modo administrador e depois atravez do bloco de notas abrir a pasta e o arquivo, só assim será possível fazer as mudanças pois é um sistema de segurança do windows</mark></p>
                                     </div>
