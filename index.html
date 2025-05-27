@@ -1540,11 +1540,11 @@ CREATE DATABASE n8n_queue;
 
                                     <div class="class-notes">
                                         <p>Para somar números</mark></p>
-                                        <img src="assets/images/modulo02_etapa02_aulaxx_01.png" alt="">
+                                        <img src="assets/images/modulo03_etapa02_aulaxx_01.png" alt="">
                                         <p>Para normalizar texto o <mark class="blue-mark">.toSnakeCase()</mark> transforma o texto em <mark class="blue-mark">low case</mark> e substitue espaço por underline ( _ ) e o <mark class="blue-mark">.trim()</mark> remove espaço em banco no começo e no final da frase</p>
-                                        <img src="assets/images/modulo02_etapa02_aulaxx_02.png" alt="">
+                                        <img src="assets/images/modulo03_etapa02_aulaxx_02.png" alt="">
                                         <p>O <mark class="blue-mark">.extractUrl()</mark> procura um <mark>Url</mark> dentro de um texto</p>
-                                        <img src="assets/images/modulo02_etapa02_aulaxx_03.png" alt="">
+                                        <img src="assets/images/modulo03_etapa02_aulaxx_03.png" alt="">
                                     </div>
                                 </details>
                             </li>
@@ -1560,7 +1560,7 @@ CREATE DATABASE n8n_queue;
 
                                     <div class="class-notes">
                                         <p>O ideal do n8n é o <mark>modo fila</mark> mas sem ser o modo fila tem o loop de itens que é feito da seguinte forma</p>
-                                        <img src="assets/images/modulo02_etapa03_aula04_01.png" alt="">
+                                        <img src="assets/images/modulo03_etapa03_aula04_01.png" alt="">
                                     </div>
                                 </details>
                             </li>
@@ -1570,9 +1570,364 @@ CREATE DATABASE n8n_queue;
 
                                     <div class="class-notes">
                                         <p>O <mark>node wait</mark> fora do seu <mark>node Loop Over Items</mark> vai parar o Processamento do seu workflow para que o outros workes possam trabalhar, mas o <mark>node wait dentro do seu node Loop Over Items</mark> não vai parar o seu workflow e vai ficar consumindo memória</p>
-                                        <img src="assets/images/modulo02_etapa03_aula05_01.png" alt="">
+                                        <img src="assets/images/modulo03_etapa03_aula05_01.png" alt="">
                                     </div>
                                 </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Usando os Core <mark>Nodes</mark></mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 01 - Filtrando Dados com o Node Filter</summary>
+
+                                    <div class="class-notes">
+                                        <p>o <mark>primeiro</mark> node mais importante é o <mark>Edit Fildes (set)</mark> e o segundo é validar os valores com o <mark>filter</mark></p>
+                                        <img src="assets/images/modulo03_etapa04_aula01_01.png" alt="">
+                                        <p><mark>O filter é um "if" sem o "else", ele faz a verificação e só passa o que for verdadeiro</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - Estruturas Condicionais com <mark>IF e Switch</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O <mark>if e switch</mark> também são essenviais para o dia a dia</p>
+                                        <img src="assets/images/modulo03_etapa04_aula02_01.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula02_02.png" alt="">
+                                        <p>No <mark>Switch</mark> também tem a condição dos que não passaram pelas verificações anteriores que é o <mark>Fallback Output</mark></p>
+                                        <img src="assets/images/modulo03_etapa04_aula02_03.png" alt="">
+                                        <p><mark>Marcando como "extra output" é possível trabalhar com esses dados no workflow</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Visão Geral do Node <mark>Split Out</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Não é um node tão usado mas as vezes precisa dele</p>
+                                        <br>
+                                        <p>A função dele é pegar um <mark>Array</mark> ( uma lista de itens ) e separar eles para trabalhar com cada um desses itens</p>
+                                        <img src="assets/images/modulo03_etapa04_aula03_01.png" alt="">
+                                        <p>Além de <mark>Splodir</mark> ( separar ) os itens você também pode adicionar o restante dos outros itens</p>
+                                        <img src="assets/images/modulo03_etapa04_aula03_02.png" alt="">
+                                        <p>Depois você editar com só o que você quer dessas informações</p>
+                                        <img src="assets/images/modulo03_etapa04_aula03_03.png" alt="">
+                                        <p>Você pode criar esse workflow para trabalhar com esses items</p>
+                                        <img src="assets/images/modulo03_etapa04_aula03_04.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Visão Geral do Node <mark>Limit e Sort</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O node <mark>Limit</mark> vai limitar o quando de itens vai passar, se tiver 4 itens e o limit for 1 só vai passar 1 item</p>
+                                        <img src="assets/images/modulo03_etapa04_aula04_01.png" alt="">
+                                        <p>Antes do node <mark>Limit</mark> pode se usar o node <mark>Sort</mark> para organizar os nodes antes de escolher</p>
+                                        <br>
+                                        <p>Você pode tanto organizar em ordem alfavetica ou aleatória e depois você pega os 2 primeiros</p>
+                                        <img src="assets/images/modulo03_etapa04_aula04_02.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Visao Geral do Node <mark>Remove Duplicates</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Antes de separa e escolher 2 itens você deve garantir que eles não sejam iguais usando o node <mark>Remove Duplicates</mark> antes dos nodes <mark>Limit e Sort</mark></p>
+                                        <img src="assets/images/modulo03_etapa04_aula05_01.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula05_01.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 06 - Visão Geral do Node <mark>Summarize</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O node <mark>Summarize</mark> é um node para fazer contas, somar, contar a quantidade de itens, fazer a média, menor e maior</p>
+                                        <img src="assets/images/modulo03_etapa04_aula06_01.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 07 - Visão Geral do Node <mark>Crypto</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>É um node para criar criptografia de um numero em um hash</p>
+                                        <img src="assets/images/modulo03_etapa04_aula07_01.png" alt="">
+                                        <p><small><i>( usando o UUID o hash não vai se repetir e vai ser grande )</i></small></p>
+                                        <br>
+                                        <p><mark>Usar o UUID é o ideal caso queira trabalhar com id único</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 08 - Trabalhando com Arquivos no N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>Usando o node <mark>Convert To File</mark> você pode pegar um dado <mark>base64</mark> e transformar-lo em um arquivo</p>
+                                        <img src="assets/images/modulo03_etapa04_aula08_01.png" alt="">
+                                        <p>Usando esse node você pode trabalhar com o <mark>qrcode</mark> por exemplo</p>
+                                        <img src="assets/images/modulo02_etapa04_aula08_02.png" alt="">
+                                        <p>Além disso, você também pode ler um arquivo do disco ou salvar um arquivo no disco usando o node <mark>Read/Write Files to Disk</mark></p>
+                                        <img src="assets/images/modulo03_etapa04_aula08_03.png" alt="">
+                                        <p><mark>Salvar os arquivos no n8n são temporários, quando o n8n atualizar esses arquivos vão ser deletados</mark></p>
+                                        <br>
+                                        <p>Você também pode fazer o contrário e tranformar um arquivo em <mark>base64</mark> usando o node <mark>extract from</mark></p>
+                                        <img src="assets/images/modulo03_etapa04_aula08_04.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 09 - Trabalhando com o Node <mark>Edit Image</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O n8n também tem uma função de edição de imagem para alguns casos expecíficos que é o <mark>Edit Image</mark></p>
+                                        <img src="assets/images/modulo03_etapa04_aula09_01.png" alt="">
+                                        <p>pegando essa imagem com o node <mark>HTTP</mark> para tabalhar</p>
+                                        <img src="assets/images/modulo03_etapa04_aula09_02.png" alt="">
+                                        <p>Use para adicionar nomes na imagem ou utras edições</p>
+                                        <img src="assets/images/modulo03_etapa04_aula09_03.png" alt="">
+                                        <p>Faça essas edições uma a uma para consumir menos memória</p>
+                                        <img src="assets/images/modulo03_etapa04_aula09_04.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 10 - Trabalhando com o Node <mark>Merge</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>É um node capaz de juntar duas ramificações do workflow em uma só</p>
+                                        <img src="assets/images/modulo03_etapa04_aula10_01.png" alt="">
+                                        <p>Existe um site que pega o <mark>ip</mark> e retorna a geolocalização desse <mark>ip</mark></p>
+                                        <img src="assets/images/modulo03_etapa04_aula10_02.png" alt="">
+                                        <p><small><i>( para testes pode usar a versão gratuita <mark>( http )</mark> mas para produção não é recomendado usar <mark>http</mark> por isso é recomendado usar a versão paga caso resolva usar essa função pois ela vem como <mark>https</mark> )</i></small></p>
+                                        <img src="assets/images/modulo03_etapa04_aula10_03.png" alt="">
+                                        <p>Você vai usar a opção de <mark>combine</mark> para juntar os 2 e 1</p>
+                                        <img src="assets/images/modulo03_etapa04_aula10_04.png" alt="">
+                                        <p><small><i>( Na automação de marketing juntar várias informações para ter um conjunto completo no final chama <mark>Progressive Profileing</mark> )</i></small></p>
+                                        <br>
+                                        <p><small><i>( Exemplo: chega só o e-mail, ai junta com as informações do hub spot, no hub spot vei o telefone então pega as inforamções da evolution, vai no hotmart e verifica se tem alguma venda dele e assim vai )</i></small></p>
+                                        <img src="assets/images/modulo03_etapa04_aula10_05.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 11 - Trabalhando com o Node <mark>Schedule</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>É o node que pode automatizar para que o workflow trabalhe de tempos em tempos altomático</p>
+                                        <br>
+                                        <p>Exmplo de função, todo dia a meia noite eu vou verificar se meus sistemas estão funcionando, ou colher as informações dos grupos, então salvos as conversas do grupo no chatWoot, e meia noite eu busco o histórico do grupo, processo numa ia e salvo no click up pra mim</p>
+                                        <img src="assets/images/modulo03_etapa04_aula11_01.png" alt="">
+                                        <p>Você também pode rodar em dias expecíficos da semana, ou mês</p>
+                                        <img src="assets/images/modulo03_etapa04_aula11_02.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 12 - Conhecendo as Expressões Cron do Node <mark>Schedule</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O node <mark>Schedule</mark> funcioan com o <mark>crontab</mark> para acessar uma ferramenta para usar o <a href="https://crontab.guru/">ferramenta do Crontab</a></p>
+                                        <img src="assets/images/modulo03_etapa04_aula12_01.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula12_02.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula12_03.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula12_04.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula12_05.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula12_06.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 13 - Trabalhando com <mark>Formulários</mark> no N8N</summary>
+
+                                    <div class="class-notes">
+                                        <p>Você pode acessar formulários no n8n</p>
+                                        <img src="assets/images/modulo03_etapa04_aula13_01.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula13_02.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula13_03.png" alt="">
+                                        <p>Também é possivel separar o formulário em várias partes</p>
+                                        <img src="assets/images/modulo03_etapa04_aula13_04.png" alt="">
+                                        <img src="assets/images/modulo03_etapa04_aula13_05.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Usando os <mark>Community Nodes</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 01 - Visão Geral dos <mark>Community Nodes</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Os <mark>Community Nodes</mark> são recursos poderosos, mas como são feitos pela comunidade precisa ter cautela ao usalos já que eles terão acesso a tudo do seu n8n e até seu banco de dados</p>
+                                        <br>
+                                        <p>Existe uma lista de <mark>Community Nodes</mark> que a n8n aprova e que são de segurança, já os que o não estão nessa lista são mais dificeis de instalar</p>
+                                        <br>
+                                        <p><small><i>( Para instalar um Community node que não está na lista de confiáveis do n8n você precisar subir uma imagem no docker desse node )</i></small></p>
+                                        <br>
+                                        <p>Para saber se o node é confiável ou não, eles tem código aberto então dá pra ver o que esse node faz pelo código</p>
+                                        <br>
+                                        <p><mark class="blue-mark">É interessante a ideia de criar Community nodes customizados para oferecer aos clientes que ajudem os clientes mas que também deixem eles presos a você já que só você vai oferecer aquele Community node para ele</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - Instalando um <mark>Community Node</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>No n8n -> Settings -> Community Nodes você tem a tela de adicionar os Community nodes</p>
+                                        <img src="assets/images/modulo03_etapa05_aula02_01.png" alt="">
+                                        <p>Clicando em explorar você abre no navegador a lista de confiáveis do n8n dos Community nodes</p>
+                                        <img src="assets/images/modulo03_etapa05_aula02_02.png" alt="">
+                                        <p>Pegue o nome do node e coloque no espaço de nome do node, marque que entende os riscos e clique em instalar</p>
+                                        <img src="assets/images/modulo03_etapa05_aula02_03.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Usando o <mark>Community Node Globals</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>O professor recomenda um node da comunidade que permite usar as <mark>Credenciais</mark> como <mark>variáveis globais</mark> recurso que só está disponível no <mark>n8n interprise</mark> que tem que pagar 3.000 R$ por mês</p>
+                                        <img src="assets/images/modulo03_etapa05_aula03_01.png" alt="">
+                                        <img src="assets/images/modulo03_etapa05_aula03_02.png" alt="">
+                                        <p>Chamando esse node e selecionando os dados que você adicionou</p>
+                                        <img src="assets/images/modulo03_etapa05_aula03_03.png" alt="">
+                                        <p>E passar esses dados para os próximos nodes como se fosse variáveis</p>
+                                        <img src="assets/images/modulo03_etapa05_aula03_04.png" alt="">
+                                        <img src="assets/images/modulo03_etapa05_aula03_05.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Usando o <mark>Community Node QrCode</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Outro Community node que o professor recomenda é o de gerar <mark>qrcode</mark></p>
+                                        <img src="assets/images/modulo03_etapa05_aula04_01.png" alt="">
+                                        <img src="assets/images/modulo03_etapa05_aula04_02.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Usando o Community Node <mark>Text Manipulation</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p>Outro Community node recomendado pelo professor é um de editar texto</p>
+                                        <img src="assets/images/modulo03_etapa05_aula05_01.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                    <details>
+                        <summary class="module-subtitle">Trabalhando com <mark>API e Postman</mark></summary>
+
+                        <ul>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 01 - Visão Geral de API</summary>
+
+                                    <div class="class-notes">
+                                        <p>Aprender api não é só saber como usar mas também saber como funciona e quais são os limites, porque você pode ser bloqueado em algumas apis por acessar de mais etc...</p>
+                                        <img src="assets/images/modulo03_etapa06_aula01_01.png" alt="">
+                                        <p>Somente com os nodes <mark>Webhook e Http Request</mark> é possível fazer qualquer coisa com o n8n</p>
+                                        <img src="assets/images/modulo03_etapa06_aula01_02.png" alt="">
+                                        <p>Você usa os outros nodes quando não é uma api ou quando quer facilitar usando um node que por taz dele já tem um <mark>http request</mark> mas que foi simplificado para ficar mais fácil de usar</p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 02 - Visão Geral do Postman</summary>
+
+                                    <div class="class-notes">
+                                        <p>O postman é uma ferramenta para testar as apis, você pode usar ele para testar as apis antes de usar no n8n</p>
+                                        <br>
+                                        <p>Crie uma conta gratuita, pode usar a conta do google e a versão gratuita já é mais do que suficiente para você usar no dia a dia</p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 03 - Criando uma Coleção no Postman</summary>
+
+                                    <div class="class-notes">
+                                        <p>Primeiramente crie sua Workspace e dentro dela vamos criar coleções ( como se fosse uma pasta que dentro dela nós vamos fazer a requisição para api )</p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 04 - Configurando uma Coleção no Postman</summary>
+
+                                    <div class="class-notes">
+                                        <p>Se você for trabalhar com uma api que tem uma versão no postman você pode configurar a sua colição usando o site do postman como no caso da <a href="https://www.postman.com/agenciadgcode/evolution-api/overview">postman - evolution-api overview</a></p>
+                                        <br>
+                                        <p>Para usar o site você precisa criar um fork para poder modificar</p>
+                                        <img src="assets/images/modulo03_etapa06_aula04_01.png" alt="">
+                                        <p>Para poder usar essa coleção faça uma cópia e modifique a cópia, adicione nas variáveis de <mark>api key e global key</mark> a <mark class="blue-mark">api key do evolution</mark></p>
+                                        <img src="assets/images/modulo03_etapa06_aula04_02.png" alt="">
+                                        <p>Mude também a base url e url da evolution nas variáveis</p>
+                                        <img src="assets/images/modulo03_etapa06_aula04_03.png" alt="">
+                                        <img src="assets/images/modulo03_etapa06_aula04_04.png" alt="">
+                                        <p>Mude também o nome da instancia do evolution</p>
+                                        <img src="assets/images/modulo03_etapa06_aula04_05.png" alt="">
+                                        <img src="assets/images/modulo03_etapa06_aula04_06.png" alt="">
+                                        <img src="assets/images/modulo03_etapa06_aula04_07.png" alt="">
+                                        <p>Sobre a autenticação ela é herdada ou seja você pode ter a autenticação na coleção e usar ela em todos as "sub-pastas" dessa coleção, <mark class="blue-mark">marcando a opção Auth Type como Inherit auth from parent</mark></p>
+                                        <img src="assets/images/modulo03_etapa06_aula04_08.png" alt="">
+                                        <p><mark>Em alguns casos não vai funcionar pois as autenticações usadas serão diferentes</mark></p>
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 05 - Autenticação vs Autorização</summary>
+
+                                    <div class="class-notes">
+                                        <p>Sempre que for pedir autenticação de uma api para o cliente pessa também as autorizações</p>
+                                        <img src="assets/images/modulo03_etapa06_aula05_01.png" alt="">
+                                        <p>Os 3 tipos de autenticação são: </p>
+                                        <img src="assets/images/modulo03_etapa06_aula05_02.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
+                            <li>
+                                <details>
+                                    <summary class="class-title">Aula 06 - Visão Geral de <mark>REST API</mark></summary>
+
+                                    <div class="class-notes">
+                                        <p><mark>REST API</mark> é um sistema usando "regras" padrão da internet (como HTTP, que define métodos tipo GET para "pegar" algo, POST para "enviar" algo novo, etc.). Assim, diferentes sistemas podem se comunicar facilmente entre si.</p>
+                                        <img src="assets/images/modulo03_etapa06_aula06_01.png" alt="">
+                                    </div>
+                                </details>
+                            </li>
                         </ul>
                     </details>
                 </details>
